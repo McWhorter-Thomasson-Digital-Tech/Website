@@ -1,0 +1,192 @@
+/* Base Layout */
+.pageContainer {
+  background-color: #050505;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Typography & Colors */
+.accentText { color: #60a5fa; } /* Subtle Blue Accent */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1f2937;
+  z-index: 50;
+}
+.navContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.navButton {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.navButton:hover { background-color: #e5e7eb; }
+
+/* Hero */
+.hero {
+  padding: 12rem 2rem 8rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.headline {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+.subHeadline {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.primaryCta:hover { background-color: #2563eb; }
+.ctaIcon { transition: transform 0.2s ease; }
+.primaryCta:hover .ctaIcon { transform: translateX(4px); }
+
+/* Value Props */
+.valueProps {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: #0a0a0a;
+  border: 1px solid #1f2937;
+  padding: 2.5rem;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+.card:hover { border-color: #3b82f6; }
+.cardIcon { color: #60a5fa; margin-bottom: 1.5rem; }
+.cardTitle { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+.cardText { color: #9ca3af; line-height: 1.6; }
+
+/* Capabilities */
+.capabilities {
+  padding: 5rem 2rem 8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+.featureBox {
+  display: flex;
+  gap: 1.5rem;
+  background: #0a0a0a;
+  border: 1px solid #1f2937;
+  padding: 3rem;
+  border-radius: 8px;
+}
+.featureIcon { color: #ffffff; flex-shrink: 0; }
+.featureTitle { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+.featureText { color: #9ca3af; line-height: 1.6; }
+
+/* Contact Section */
+.contact {
+  background-color: #0a0a0a;
+  padding: 6rem 2rem;
+  border-top: 1px solid #1f2937;
+}
+.contactWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contactHeadline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+.form { display: flex; flex-direction: column; gap: 1.5rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.5rem; }
+.formGroup label { font-size: 0.875rem; font-weight: 500; color: #d1d5db; }
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  background: #000000;
+  border: 1px solid #374151;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+.submitButton {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s ease;
+}
+.submitButton:hover { background-color: #e5e7eb; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .featureBox { flex-direction: column; padding: 2rem; }
+  .grid2 { grid-template-columns: 1fr; }
+}
