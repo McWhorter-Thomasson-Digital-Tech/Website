@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import { Zap, Code2, MapPin, Building2, ShoppingCart, ArrowRight } from 'lucide-react';
 import styles from './CSS/Modules/Page.module.css';
 
@@ -18,7 +19,7 @@ const Hero = () => (
     <div className={styles.heroContent}>
       <h1 className={styles.headline}>
         High-Performance Digital Assets <br />
-        <span className={styles.accentText}>for Virginia Businesses.</span>
+        <span className={styles.accentText}>for Your Business.</span>
       </h1>
       <p className={styles.subHeadline}>
         We replace slow, outdated websites with custom-coded lead generation engines that dominate local search.
@@ -85,36 +86,71 @@ const Capabilities = () => (
 );
 
 const Contact = () => (
-  <section id="contact" className={styles.contact}>
-    <div className={styles.contactWrapper}>
-      <h2 className={styles.contactHeadline}>Stop losing leads to bad design.</h2>
-      <form action="https://formspree.io/f/your_placeholder_id" method="POST" className={styles.form}>
-        <div className={styles.formGroup}>
-          <label htmlFor="name">Full Name</label>
-          <input type="text" id="name" name="name" required placeholder="John Doe" />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="business">Business Name</label>
-          <input type="text" id="business" name="business" required placeholder="Acme Corp" />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="email">Work Email</label>
-          <input type="email" id="email" name="email" required placeholder="john@acmecorp.com" />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="url">Current Website URL (Optional)</label>
-          <input type="url" id="url" name="url" placeholder="https://www.example.com" />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="details">Project Details</label>
-          <textarea id="details" name="details" rows={4} required placeholder="Tell us about your goals..."></textarea>
-        </div>
-        <button type="submit" className={styles.submitButton}>
-          Submit Inquiry
-        </button>
-      </form>
-    </div>
-  </section>
+	<section id="contact" className={styles.contact}>
+		<div className={styles.contactWrapper}>
+			<h2 className={styles.contactHeadline}>
+				Stop losing leads to bad design.
+			</h2>
+			<form
+				action="https://formspree.io/f/xnjgvwvr"
+				method="POST"
+				className={styles.form}
+			>
+				<div className={styles.formGroup}>
+					<label htmlFor="name">Full Name</label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						required
+						placeholder="John Doe"
+					/>
+				</div>
+				<div className={styles.formGroup}>
+					<label htmlFor="business">Business Name</label>
+					<input
+						type="text"
+						id="business"
+						name="business"
+						required
+						placeholder="Acme Corp"
+					/>
+				</div>
+				<div className={styles.formGroup}>
+					<label htmlFor="email">Work Email</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						required
+						placeholder="john@acmecorp.com"
+					/>
+				</div>
+				<div className={styles.formGroup}>
+					<label htmlFor="url">Current Website URL (Optional)</label>
+					<input
+						type="url"
+						id="url"
+						name="url"
+						placeholder="https://www.example.com"
+					/>
+				</div>
+				<div className={styles.formGroup}>
+					<label htmlFor="details">Project Details</label>
+					<textarea
+						id="details"
+						name="details"
+						rows={4}
+						required
+						placeholder="Tell us about your goals..."
+					></textarea>
+				</div>
+				<button type="submit" className={styles.submitButton}>
+					Submit Inquiry
+				</button>
+			</form>
+		</div>
+	</section>
 );
 
 export default function MTDTLandingPage() {
