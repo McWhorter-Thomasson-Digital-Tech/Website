@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MTDT",
+  title: "McWhorter-Thomasson Digital Technologies",
   description: "High Performance Digital Assets for Your Business",
 };
 
