@@ -1,35 +1,45 @@
-@import "tailwindcss";
+/* Core Variables placeholders requested by user */
+:root {
+  --black: #080808;
+  --obsidian: #2A2A2A;
+  --seashell: #F9F5ED;
+  --denim: #5E83AE;
+  --white: #FFFFFF;
+
+  --heading-font: system-ui, -apple-system, sans-serif;
+  --body-font: system-ui, -apple-system, sans-serif;
+}
+
+/* Base CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-:root {
-  /* Core Next.js Variables */
-  --background: #f2f5f8;
-  --foreground: #0f1419;
-
-  /* MTDT Cinematic Palette (The Severance Grade) */
-  --color-base: 242, 245, 248;       /* Clinical, cool hallway white */
-  --color-surface: 255, 255, 255;    /* Pure white for elevated cards to separate from the floor */
-  --color-mid: 205, 215, 225;        /* Sterile corporate gray for structural borders */
-  --color-text: 15, 20, 25;          /* Deep corporate suit charcoal */
-  --color-accent: 0, 160, 255;       /* Vibrant Balloon Cyan */
-  --color-bright: 0, 130, 220;       /* Slightly deeper cyan for active states */
-
-  /* Sterile Fluorescent Gradient */
-  --eclipse-gradient: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 1) 0%, rgba(242, 245, 248, 1) 60%);
-}
-/* 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif; 
+  background-color: var(--seashell);
+  color: var(--black);
+  font-family: var(--body-font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }

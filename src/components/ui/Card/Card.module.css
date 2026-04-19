@@ -1,0 +1,26 @@
+.card {
+  background-color: var(--secondary-color);
+  border: 1px solid rgba(15, 20, 25, 0.08); /* Fallback border using text color alpha */
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.elevated {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.elevated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7); /* Setup glass styling placeholder */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
