@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
-import { Button } from "@/components/ui/Button/Button";
-import { Card } from "@/components/ui/Card/Card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export const metadata = {
   title: "[TITLE Placeholder] Contact Us",
@@ -12,26 +12,33 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main>
-        <section style={{ padding: '6rem 2rem', maxWidth: '800px', margin: '0 auto', backgroundColor: '#F9F5ED', color: '#2A2A2A' }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>Contact Us</h1>
-          <p style={{ textAlign: 'center', marginBottom: '3rem', opacity: 0.7 }}>{`[INSERT_CONTACT_INTRO]`}</p>
+      <main className="min-h-screen bg-blueprint pt-24 pb-32">
+        <section className="container max-w-4xl px-4 mx-auto">
+          <div className="border-l-8 border-primary pl-6 mb-16">
+            <h1 className="font-black text-6xl uppercase tracking-tighter text-foreground">CONTACT</h1>
+            <p className="font-mono text-primary tracking-widest mt-4">{`>> AWAITING_INPUT_PARAMETERS`}</p>
+          </div>
           
-          <Card elevated>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="name" style={{ fontWeight: 600 }}>Name</label>
-                <input id="name" type="text" placeholder="John Doe" style={{ padding: '0.75rem', borderRadius: '6px', border: '1px solid rgba(42,42,42,0.15)', backgroundColor: '#FFFFFF', color: '#2A2A2A' }} />
+          <Card className="p-8 md:p-12 border-border bg-card shadow-none">
+            <h2 className="font-black text-2xl uppercase mb-8">{`[INSERT_CONTACT_INTRO]`}</h2>
+            <form className="flex flex-col gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-3">
+                  <label htmlFor="name" className="font-mono text-sm uppercase text-muted-foreground tracking-widest">Name</label>
+                  <input type="text" id="name" placeholder="John Doe" className="h-14 bg-background border border-border px-4 font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all rounded-none" />
+                </div>
+                <div className="flex flex-col gap-3">
+                  <label htmlFor="email" className="font-mono text-sm uppercase text-muted-foreground tracking-widest">Email</label>
+                  <input type="email" id="email" placeholder="john@example.com" className="h-14 bg-background border border-border px-4 font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all rounded-none" />
+                </div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="email" style={{ fontWeight: 600 }}>Email</label>
-                <input id="email" type="email" placeholder="john@example.com" style={{ padding: '0.75rem', borderRadius: '6px', border: '1px solid rgba(42,42,42,0.15)', backgroundColor: '#FFFFFF', color: '#2A2A2A' }} />
+              <div className="flex flex-col gap-3">
+                <label htmlFor="message" className="font-mono text-sm uppercase text-muted-foreground tracking-widest">Message</label>
+                <textarea id="message" rows={6} placeholder="How can we build your machine?" className="bg-background border border-border p-4 font-medium resize-y focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all rounded-none"></textarea>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="message" style={{ fontWeight: 600 }}>Message</label>
-                <textarea id="message" rows={5} placeholder="How can we help you?" style={{ padding: '0.75rem', borderRadius: '6px', border: '1px solid rgba(42,42,42,0.15)', resize: 'vertical', backgroundColor: '#FFFFFF', color: '#2A2A2A' }}></textarea>
-              </div>
-              <Button type="submit" variant="primary" fullWidth>Send Message</Button>
+              <Button type="submit" variant="default" size="lg" className="w-full h-16 font-black uppercase tracking-widest text-lg mt-4">
+                TRANSMIT MESSAGE
+              </Button>
             </form>
           </Card>
         </section>

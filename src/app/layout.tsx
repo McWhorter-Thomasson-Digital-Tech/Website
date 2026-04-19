@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={cn("font-sans", geist.variable)}>
+    <html lang="en" data-scroll-behavior="smooth" className={cn("dark font-sans", geist.variable)}>
       <head>
         <JsonLd />
       </head>
