@@ -1,66 +1,130 @@
-import React from 'react';
-import { buttonVariants } from '@/components/ui/button';
+"use client";
+
+import React, { useState } from 'react';
+import { Check } from 'lucide-react';
 import Link from 'next/link';
+import styles from './ReactOffer.module.css';
+
+const features = [
+  '[INSERT_REACT_FEATURE_1]',
+  '[INSERT_REACT_FEATURE_2]',
+  '[INSERT_REACT_FEATURE_3]',
+  '[INSERT_REACT_FEATURE_4]',
+];
+
+type BillingCycle = 'monthly' | 'quarterly' | 'annually';
 
 export function ReactOffer() {
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('annually');
+
+  const pricing: Record<BillingCycle, { price: string; detail: string; savings?: string }> = {
+    annually: {
+      price: '139',
+      detail: 'Billed annually',
+      savings: 'Save 30% annually',
+    },
+    quarterly: {
+      price: '159',
+      detail: 'Billed quarterly',
+      savings: 'Save 20% quarterly',
+    },
+    monthly: {
+      price: '199',
+      detail: 'Billed monthly',
+      savings: 'none',
+    },
+  };
+
+  const { price, detail, savings } = pricing[billingCycle];
+
+  const getTranslateX = () => {
+    switch (billingCycle) {
+      case 'monthly': return '200%';
+      case 'quarterly': return '100%';
+      case 'annually': return '0%';
+      default: return '0%';
+    }
+  };
+
   return (
-    <section id="react-websites" className="w-full bg-background border-b border-border py-24 relative overflow-hidden">
-      <div className="mx-auto px-4 sm:px-8 xl:px-16 xl:max-w-none">
+    <section id="react-websites" className={styles.section}>
+      <div className={styles.container}>
         
-        {/* Header Block */}
-        <div className="mb-16 border-l-8 border-primary pl-6">
-          <h2 className="font-black text-5xl md:text-7xl uppercase tracking-tighter text-foreground mb-4">
-            {`[INSERT_REACT_OFFER_H2]`}
-          </h2>
-          <p className="text-xl md:text-2xl font-mono text-muted-foreground uppercase tracking-widest">
-            {`[INSERT_REACT_OFFER_DESCRIPTION]`}
+        <div className={styles.sectionHeader}>
+          <p className={styles.label}>Frontend Engineering</p>
+          <h2 className={styles.title}>High-Velocity React Ecosystems</h2>
+          <p className={styles.description}>
+            We build immutable frontend architectures that eliminate waterfalls and maximize Core Web Vitals.
           </p>
         </div>
         
-        {/* Technical Pricing Block */}
-        <div className="w-full border border-border bg-card p-0 flex flex-col xl:flex-row">
-          
-          <div className="xl:w-1/3 p-8 md:p-12 border-b xl:border-b-0 xl:border-r border-border bg-muted/20 flex flex-col justify-center">
-            <div className="font-mono text-sm text-primary uppercase tracking-[0.2em] mb-4">Pricing_Tier</div>
-            <h3 className="font-black text-4xl uppercase mb-6 truncate">{`[INSERT_REACT_TIER_NAME]`}</h3>
-            <div className="flex items-baseline gap-2 mb-4">
-              <span className="text-2xl font-mono">$</span>
-              <span className="text-7xl font-black tracking-tighter">199</span>
-              <span className="text-xl font-mono text-muted-foreground">/mo</span>
+        <div className={styles.card}>
+          <div className={styles.cardInner}>
+            
+            <div className={styles.pricingSide}>
+              <p className={styles.tierLabel}>High-speed Custom React Website</p>
+              
+              {/* Billing Toggle (3 Options) */}
+              <div className={styles.toggleWrapper}>
+                <div 
+                  className={styles.toggleSlider} 
+                  style={{ 
+                    transform: `translateX(${getTranslateX()})`,
+                    width: '33.33%'
+                  }} 
+                />
+                <button 
+                  className={`${styles.toggleOption} ${billingCycle === 'annually' ? styles.active : ''}`}
+                  onClick={() => setBillingCycle('annually')}
+                >
+                  Annually
+                </button>
+                <button 
+                  className={`${styles.toggleOption} ${billingCycle === 'quarterly' ? styles.active : ''}`}
+                  onClick={() => setBillingCycle('quarterly')}
+                >
+                  Quarterly
+                </button>
+                <button 
+                  className={`${styles.toggleOption} ${billingCycle === 'monthly' ? styles.active : ''}`}
+                  onClick={() => setBillingCycle('monthly')}
+                >
+                  Monthly
+                </button>
+              </div>
+
+              <div className={styles.priceContainer}>
+                {savings && <span className={styles.saveBadge} data-savings={savings}>{savings}</span>}
+                <div className={styles.price}>
+                  <span className={styles.currency}>$</span>
+                  <span key={price} className={styles.priceValue}>{price}</span>
+                  <span className={styles.pricePeriod}>/mo</span>
+                </div>
+                <p className={styles.billingDetail}>{detail}</p>
+              </div>
+
+              <p className={styles.priceDesc}>Scalable architecture for modern innovators.</p>
+              
+              <Link href="/contact" className={styles.ctaButton}>
+                EXECUTE DEPLOYMENT
+              </Link>
             </div>
-            <p className="font-mono text-sm text-muted-foreground border-l-2 border-border pl-4">{`[INSERT_REACT_PRICE_DESC]`}</p>
-          </div>
-          
-          <div className="xl:w-2/3 p-8 md:p-12 flex flex-col justify-between">
-            <div className="font-mono text-sm text-primary uppercase tracking-[0.2em] mb-8">System_Specs</div>
             
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-12">
-              <li className="flex gap-4 items-start border-b border-border/50 pb-4">
-                <span className="font-black text-primary mt-1">01</span>
-                <span className="font-medium text-lg uppercase">{`[INSERT_REACT_FEATURE_1]`}</span>
-              </li>
-              <li className="flex gap-4 items-start border-b border-border/50 pb-4">
-                <span className="font-black text-primary mt-1">02</span>
-                <span className="font-medium text-lg uppercase">{`[INSERT_REACT_FEATURE_2]`}</span>
-              </li>
-              <li className="flex gap-4 items-start border-b border-border/50 pb-4">
-                <span className="font-black text-primary mt-1">03</span>
-                <span className="font-medium text-lg uppercase">{`[INSERT_REACT_FEATURE_3]`}</span>
-              </li>
-              <li className="flex gap-4 items-start border-b border-border/50 pb-4">
-                <span className="font-black text-primary mt-1">04</span>
-                <span className="font-medium text-lg uppercase">{`[INSERT_REACT_FEATURE_4]`}</span>
-              </li>
-            </ul>
+            <div className={styles.featuresSide}>
+              <p className={styles.featuresLabel}>What&apos;s included</p>
+              <ul className={styles.featuresList}>
+                {features.map((feature, index) => (
+                  <li key={index} className={styles.featureItem}>
+                    <div className={styles.featureIcon}>
+                      <Check />
+                    </div>
+                    <span className={styles.featureText}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             
-            <Link 
-              href="/contact" 
-              className={buttonVariants({ variant: "default", size: "lg", className: "w-full md:w-auto self-start h-16 px-12 text-lg font-black uppercase tracking-widest border border-primary hover:bg-transparent hover:text-primary transition-colors" })}
-            >
-              EXECUTE DEPLOYMENT
-            </Link>
           </div>
-          
         </div>
       </div>
     </section>

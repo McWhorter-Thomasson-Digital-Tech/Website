@@ -5,51 +5,44 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Core Variables placeholders requested by user */
 :root {
-  --black: #080808;
-  --obsidian: #2A2A2A;
-  --seashell: #F9F5ED;
-  --denim: #5E83AE;
-  --white: #FFFFFF;
-
   --heading-font: system-ui, -apple-system, sans-serif;
   --body-font: system-ui, -apple-system, sans-serif;
   --background: #ffffff;
-  --foreground: #020617;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #020617;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #020617;
-  --primary: #020617;
+  --popover-foreground: #0f172a;
+  --primary: #3B82F6;
   --primary-foreground: #ffffff;
-  --secondary: #e2e8f0;
+  --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #ccff00;
-  --accent-foreground: #020617;
+  --accent: #F97316;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #020617;
-  --chart-1: #020617;
-  --chart-2: #ccff00;
+  --ring: #3B82F6;
+  --chart-1: #3B82F6;
+  --chart-2: #F97316;
   --chart-3: #1e293b;
   --chart-4: #64748b;
   --chart-5: #cbd5e1;
-  --radius: 0rem;
+  --radius: 0.75rem;
   --sidebar: #f8fafc;
-  --sidebar-foreground: #020617;
-  --sidebar-primary: #0f766e;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #3B82F6;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #020617;
+  --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #0f766e;
+  --sidebar-ring: #3B82F6;
 }
 
-/* Base CSS Reset */
+/* Base Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -127,37 +120,37 @@ button {
 }
 
 .dark {
-  --background: #040b16;
-  --foreground: #f8fafc;
-  --card: #08152b;
-  --card-foreground: #f8fafc;
-  --popover: #08152b;
-  --popover-foreground: #f8fafc;
-  --primary: #ccff00;
-  --primary-foreground: #040b16;
-  --secondary: #0f172a;
-  --secondary-foreground: #f8fafc;
-  --muted: #08152b;
-  --muted-foreground: #94a3b8;
-  --accent: #2dd4bf;
-  --accent-foreground: #040b16;
+  --background: #0B1120;
+  --foreground: #F1F5F9;
+  --card: #131B2E;
+  --card-foreground: #F1F5F9;
+  --popover: #131B2E;
+  --popover-foreground: #F1F5F9;
+  --primary: #3B82F6;
+  --primary-foreground: #ffffff;
+  --secondary: #1E293B;
+  --secondary-foreground: #F1F5F9;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #F97316;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #ccff00;
-  --chart-1: #ccff00;
-  --chart-2: #2dd4bf;
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #3B82F6;
+  --chart-1: #3B82F6;
+  --chart-2: #F97316;
   --chart-3: #64748b;
   --chart-4: #94a3b8;
   --chart-5: #cbd5e1;
-  --sidebar: #08152b;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #2dd4bf;
-  --sidebar-primary-foreground: #040b16;
-  --sidebar-accent: #1e293b;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #1e293b;
-  --sidebar-ring: #2dd4bf;
+  --sidebar: #131B2E;
+  --sidebar-foreground: #F1F5F9;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F1F5F9;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #3B82F6;
 }
 
 @layer base {
@@ -170,12 +163,13 @@ button {
   html {
     @apply font-sans;
   }
-  
-  /* Brutalist Blueprint Pattern */
-  .bg-blueprint {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, color-mix(in srgb, var(--border), transparent 80%) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in srgb, var(--border), transparent 80%) 1px, transparent 1px);
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

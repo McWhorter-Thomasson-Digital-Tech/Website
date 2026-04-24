@@ -1,0 +1,153 @@
+.main {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+}
+
+.container {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container { padding: 0 2rem; }
+}
+
+.header {
+  margin-bottom: 4rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 640px) { .heading { font-size: 3rem; } }
+@media (min-width: 768px) { .heading { font-size: 3.75rem; } }
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+}
+
+.card {
+  background: color-mix(in srgb, var(--card), transparent 40%);
+  backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+@media (min-width: 640px) {
+  .card { padding: 3rem; }
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .fieldGrid { grid-template-columns: 1fr 1fr; }
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.input {
+  height: 3rem;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  transition: all 200ms ease;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary), transparent 80%);
+}
+
+.input::placeholder {
+  color: color-mix(in srgb, var(--muted-foreground), transparent 50%);
+}
+
+.textarea {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  resize: none;
+  transition: all 200ms ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary), transparent 80%);
+}
+
+.textarea::placeholder {
+  color: color-mix(in srgb, var(--muted-foreground), transparent 50%);
+}
+
+.submitButton {
+  width: 100%;
+  height: 3rem;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.submitButton:hover {
+  opacity: 0.9;
+}
