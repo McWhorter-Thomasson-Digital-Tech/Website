@@ -1,0 +1,199 @@
+.main {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+}
+
+/* ─── Hero ─── */
+.heroSection {
+  max-width: 48rem;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+@media (min-width: 640px) {
+  .heroSection {
+    padding: 0 2rem;
+  }
+}
+
+.label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  background: color-mix(in srgb, var(--primary), transparent 88%);
+  padding: 0.3rem 1rem;
+  border-radius: 9999px;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(160deg, #f1f5f9 20%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 3.75rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  max-width: 38rem;
+  margin: 0 auto;
+}
+
+/* ─── Control Panel ─── */
+.controlSection {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.controlCard {
+  width: 100%;
+  background: color-mix(in srgb, var(--card), transparent 40%);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 88%);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground), transparent 92%);
+  transition: border-color 300ms ease;
+}
+
+.controlCard:hover {
+  border-color: color-mix(in srgb, var(--primary), transparent 75%);
+}
+
+/* Toggle strip */
+.toggleGroup {
+  display: flex;
+  gap: 0.375rem;
+  background: color-mix(in srgb, var(--background), transparent 30%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 92%);
+  border-radius: 0.75rem;
+  padding: 0.3rem;
+  margin-bottom: 1.75rem;
+}
+
+.toggleButton {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 0.55rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  color: var(--muted-foreground);
+  position: relative;
+  z-index: 1;
+}
+
+.toggleButton:hover:not(.active) {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground), transparent 94%);
+}
+
+.toggleButton.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow:
+    0 2px 10px color-mix(in srgb, var(--primary), transparent 55%),
+    0 0 0 1px color-mix(in srgb, var(--primary), transparent 40%);
+}
+
+/* Effect info block */
+.effectInfo {
+  text-align: center;
+}
+
+.effectName {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+}
+
+.effectDescription {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  line-height: 1.65;
+}
+
+/* Prompt hint */
+.promptArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  animation: prompt-pulse 2.5s ease-in-out infinite;
+}
+
+.cursorIcon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--muted-foreground);
+  animation: prompt-float 3s ease-in-out infinite;
+}
+
+.promptText {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes prompt-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes prompt-pulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

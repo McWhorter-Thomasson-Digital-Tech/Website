@@ -10,6 +10,7 @@ type BillingCycle = 'monthly' | 'quarterly' | 'annually';
 interface PackageConfig {
   id: string;
   name: string;
+  shortName: string;
   description: string;
   features: string[];
   pricing: Record<BillingCycle, { price: string; detail: string; savings?: string }>;
@@ -19,6 +20,7 @@ const packages: PackageConfig[] = [
   {
     id: 'website',
     name: 'Business websites & SEO',
+    shortName: 'Marketing',
     description: 'Fast, AI-search-optimized sites designed to capture leads and grow your business.',
     features: [
       'High-Performance Next.js Build',
@@ -35,6 +37,7 @@ const packages: PackageConfig[] = [
   {
     id: 'ecommerce',
     name: 'E-commerce storefronts',
+    shortName: 'E-Commerce',
     description: 'Lightning-fast headless e-commerce built to maximize your revenue.',
     features: [
       'Headless Next.js Commerce Architecture',
@@ -51,6 +54,7 @@ const packages: PackageConfig[] = [
   {
     id: 'fullstack',
     name: 'SaaS platforms',
+    shortName: 'Full-Stack',
     description: 'Full-stack engineering for custom SaaS applications.',
     features: [
       'Modern React Server Components (RSC)',
@@ -66,18 +70,16 @@ const packages: PackageConfig[] = [
   }
 ];
 
+const billingCycleOrder: BillingCycle[] = ['annually', 'quarterly', 'monthly'];
+
 export function ReactOffer() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('annually');
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const getTranslateX = () => {
-    switch (billingCycle) {
-      case 'monthly': return '200%';
-      case 'quarterly': return '100%';
-      case 'annually': return '0%';
-      default: return '0%';
-    }
+  const getBillingTranslateX = () => {
+    const idx = billingCycleOrder.indexOf(billingCycle);
+    return `${idx * 100}%`;
   };
 
   const scrollTo = (index: number) => {
@@ -101,7 +103,6 @@ export function ReactOffer() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Find the index of the intersecting child
             const index = Array.from(el.children).indexOf(entry.target);
             if (index !== -1) {
               setActiveIndex(index);
@@ -111,7 +112,7 @@ export function ReactOffer() {
       },
       {
         root: el,
-        threshold: 0.6, // Fire when 60% of the element is visible
+        threshold: 0.6,
       }
     );
 
@@ -132,37 +133,6 @@ export function ReactOffer() {
           </p>
         </div>
 
-        {/* Global Billing Toggle */}
-        <div className={styles.globalToggleContainer}>
-          <div className={styles.toggleWrapper}>
-            <div 
-              className={styles.toggleSlider} 
-              style={{ 
-                transform: `translateX(${getTranslateX()})`,
-                width: '33.33%'
-              }} 
-            />
-            <button 
-              className={`${styles.toggleOption} ${billingCycle === 'annually' ? styles.active : ''}`}
-              onClick={() => setBillingCycle('annually')}
-            >
-              Annually
-            </button>
-            <button 
-              className={`${styles.toggleOption} ${billingCycle === 'quarterly' ? styles.active : ''}`}
-              onClick={() => setBillingCycle('quarterly')}
-            >
-              Quarterly
-            </button>
-            <button 
-              className={`${styles.toggleOption} ${billingCycle === 'monthly' ? styles.active : ''}`}
-              onClick={() => setBillingCycle('monthly')}
-            >
-              Monthly
-            </button>
-          </div>
-        </div>
-        
         {/* Swipe Controls / Indicators */}
         <div className={styles.swipeControls}>
           <button 
@@ -204,6 +174,26 @@ export function ReactOffer() {
                   
                   <div className={styles.pricingSide}>
                     <p className={styles.tierLabel}>{pkg.name}</p>
+
+                    {/* Billing Cycle Toggle — inside the card */}
+                    <div className={styles.billingToggleWrapper}>
+                      <div 
+                        className={styles.billingToggleSlider} 
+                        style={{ 
+                          transform: `translateX(${getBillingTranslateX()})`,
+                          width: `${100 / billingCycleOrder.length}%`
+                        }} 
+                      />
+                      {billingCycleOrder.map((cycle) => (
+                        <button
+                          key={cycle}
+                          className={`${styles.billingToggleOption} ${billingCycle === cycle ? styles.active : ''}`}
+                          onClick={() => setBillingCycle(cycle)}
+                        >
+                          {cycle.charAt(0).toUpperCase() + cycle.slice(1)}
+                        </button>
+                      ))}
+                    </div>
                     
                     <div className={styles.priceContainer}>
                       {currentPricing.savings && currentPricing.savings !== 'none' && (
@@ -214,7 +204,7 @@ export function ReactOffer() {
                       )}
                       <div className={styles.price}>
                         <span className={styles.currency}>$</span>
-                        <span key={currentPricing.price} className={styles.priceValue}>{currentPricing.price}</span>
+                        <span key={`${pkg.id}-${billingCycle}`} className={styles.priceValue}>{currentPricing.price}</span>
                         <span className={styles.pricePeriod}>/mo</span>
                       </div>
                       <p className={styles.billingDetail}>{currentPricing.detail}</p>
