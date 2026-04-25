@@ -6,17 +6,17 @@ import styles from './BackendAutomation.module.css';
 const benefits = [
   {
     icon: Settings,
-    title: 'Automated Workflows',
+    title: 'Automated workflows',
     desc: 'Eliminate manual intervention with self-healing pipelines.',
   },
   {
     icon: Zap,
-    title: 'Elastic Scaling',
+    title: 'Infinite scaling',
     desc: 'Dynamic resource allocation based on real-time telemetry.',
   },
   {
     icon: ShieldCheck,
-    title: 'Security by Default',
+    title: 'Secure by default',
     desc: 'SOC2 compliant architectures with zero-trust protocols.',
   },
 ];
@@ -27,10 +27,10 @@ export function BackendAutomation() {
       <div className={styles.container}>
         
         <div className={styles.sectionHeader}>
-          <p className={styles.label}>Backend Engineering</p>
-          <h2 className={styles.title}>Immutable Backend Pipelines</h2>
+          <p className={styles.label}>Backend engineering</p>
+          <h2 className={styles.title}>Automated backends</h2>
           <p className={styles.description}>
-            Orchestrating secure, predictable, and fully automated data flows for mission-critical systems.
+            Secure, automated, and scalable data flows for e-commerce and SaaS.
           </p>
         </div>
         
@@ -48,11 +48,11 @@ export function BackendAutomation() {
         
         <div className={styles.ctaBanner}>
           <div>
-            <h3 className={styles.ctaTitle}>System Integration</h3>
-            <p className={styles.ctaDesc}>Start your cloud automation journey with a technical audit.</p>
+            <h3 className={styles.ctaTitle}>System integration</h3>
+            <p className={styles.ctaDesc}>Start your automation journey with a technical audit.</p>
           </div>
           <Link href="/contact" className={styles.ctaButton}>
-            Book a Consultation
+            Book consultation
           </Link>
         </div>
       </div>

@@ -11,26 +11,22 @@ export function Hero() {
       </div>
       
       <div className={styles.content}>
-        <div className={styles.badge}>
-          <span className={styles.badgeDot} />
-          Digital Engineering Agency
-        </div>
         
         <h1 className={styles.heading}>
-          Elite Web & System Architecture{' '}
-          <span className={styles.highlight}>for the Industry Leader</span>
+          Websites and SaaS{' '}
+          <span className={styles.highlight}>for modern business</span>
         </h1>
         
         <p className={styles.subtitle}>
-          Lightning-fast, high-conversion, and secure digital architecture. From $139/mo custom websites for local businesses, to scalable automation software systems for the modern enterprise.
+          We build lightning-fast business websites and SaaS platforms. Every project is optimized for AI search engines and maximum performance.
         </p>
         
         <div className={styles.buttons}>
           <Link href="#react-websites" className={styles.primaryButton}>
-            Explore Services
+            View services
           </Link>
           <Link href="/contact" className={styles.outlineButton}>
-            Start a Project
+            Start project
           </Link>
         </div>
       </div>

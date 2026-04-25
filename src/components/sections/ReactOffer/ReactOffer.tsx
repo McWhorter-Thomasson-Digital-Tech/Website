@@ -19,9 +19,9 @@ interface PackageConfig {
 const packages: PackageConfig[] = [
   {
     id: 'website',
-    name: 'Performance Marketing Site',
+    name: 'Business websites & SEO',
     shortName: 'Marketing',
-    description: 'Blazing-fast, SEO-optimized static architecture designed to capture leads and convert.',
+    description: 'Fast, AI-search-optimized sites designed to capture leads and grow your business.',
     features: [
       'High-Performance Next.js Build',
       'Technical SEO & Core Web Vitals',
@@ -36,9 +36,9 @@ const packages: PackageConfig[] = [
   },
   {
     id: 'ecommerce',
-    name: 'Headless Digital Storefront',
+    name: 'E-commerce storefronts',
     shortName: 'E-Commerce',
-    description: 'Omnichannel headless commerce with sub-second page loads engineered to maximize revenue.',
+    description: 'Lightning-fast headless e-commerce built to maximize your revenue.',
     features: [
       'Headless Next.js Commerce Architecture',
       'Shopify, Stripe & PIM Integrations',
@@ -53,9 +53,9 @@ const packages: PackageConfig[] = [
   },
   {
     id: 'fullstack',
-    name: 'Custom Web Application',
+    name: 'SaaS platforms',
     shortName: 'Full-Stack',
-    description: 'Enterprise-grade full-stack engineering with scalable, immutable backend pipelines.',
+    description: 'Full-stack engineering for custom SaaS applications.',
     features: [
       'Modern React Server Components (RSC)',
       'Custom Database Architecture & Scaling',
@@ -126,10 +126,10 @@ export function ReactOffer() {
       <div className={styles.container}>
         
         <div className={styles.sectionHeader}>
-          <p className={styles.label}>Frontend & Backend Engineering</p>
-          <h2 className={styles.title}>High-Velocity React Ecosystems</h2>
+          <p className={styles.label}>Frontend & backend engineering</p>
+          <h2 className={styles.title}>Our core products</h2>
           <p className={styles.description}>
-            We build immutable frontend architectures and robust databases that eliminate bottlenecks and maximize performance.
+            We build fast, scalable websites and web apps that drive revenue.
           </p>
         </div>
 
@@ -213,7 +213,7 @@ export function ReactOffer() {
                     <p className={styles.priceDesc}>{pkg.description}</p>
                     
                     <Link href="/contact" className={styles.ctaButton}>
-                      EXECUTE DEPLOYMENT
+                      Deploy now
                     </Link>
                   </div>
                   

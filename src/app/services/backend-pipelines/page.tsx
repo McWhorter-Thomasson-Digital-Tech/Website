@@ -5,8 +5,8 @@ import Link from 'next/link';
 import styles from '../page.module.css';
 
 export const metadata = {
-  title: "Backend Pipelines | MTDT Agency",
-  description: "Robust, serverless automation and data orchestration. Custom database architecture, API ecosystems, and CI/CD pipelines for mission-critical systems.",
+  title: "Automated Backends | MTDT Agency",
+  description: "Secure, serverless backend infrastructures that automate data operations and scale elastically for modern web applications.",
 };
 
 export default function BackendPipelinesPage() {

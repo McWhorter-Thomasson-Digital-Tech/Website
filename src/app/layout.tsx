@@ -13,32 +13,24 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mtdigitaltech.com"),
   title: {
     template: "%s | MTDT Agency",
-    default: "MTDT Agency | High-Velocity Digital Architecture & Engineering",
+    default: "MTDT Agency | Websites & SaaS for Modern Business",
   },
-  description: "MTDT (McWhorter-Thomasson Digital Technologies) engineers high-velocity React ecosystems and immutable backend pipelines for modern innovators and enterprises.",
-  keywords: ["Digital Engineering", "React Development", "Backend Automation", "Workflow Optimization", "Software Architecture", "MTDT Agency", "Matthew McWhorter", "Graham Thomasson"],
+  description: "MTDT Agency builds high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search and conversion.",
+  keywords: ["Business Websites", "SaaS Engineering", "E-commerce Development", "AI Search Optimization", "AEO", "MTDT Agency", "Matthew McWhorter", "Graham Thomasson"],
   authors: [{ name: "Matthew McWhorter" }, { name: "Graham Thomasson" }],
   openGraph: {
-    title: "MTDT Agency | We Build Digital Machines",
-    description: "High-velocity React ecosystems and immutable backend pipelines engineered for efficiency and scale.",
+    title: "MTDT Agency | Websites & SaaS for Modern Business",
+    description: "High-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search.",
     url: "https://mtdigitaltech.com",
     siteName: "McWhorter-Thomasson Digital Technologies",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "MTDT Agency - Engineering High-Velocity Digital Machines",
-      },
-    ],
+
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MTDT Agency | High-Velocity Engineering",
-    description: "Engineering high-velocity React ecosystems and immutable backend pipelines.",
-    images: ["/og-image.jpg"],
+    title: "MTDT Agency | Websites & SaaS for Modern Business",
+    description: "High-performance business websites, e-commerce storefronts, and custom SaaS platforms.",
   },
   alternates: {
     canonical: "https://mtdigitaltech.com",

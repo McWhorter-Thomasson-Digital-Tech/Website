@@ -5,26 +5,26 @@ import styles from './ServicesCards.module.css';
 
 const services = [
   { 
-    title: 'React Ecosystems', 
-    desc: 'High-velocity, immutable frontend architectures built for scale and performance.', 
+    title: 'Business websites', 
+    desc: 'Fast, scalable business websites optimized for search and conversion.', 
     tag: 'Frontend',
     href: '/services/react-ecosystems'
   },
   { 
-    title: 'Backend Pipelines', 
-    desc: 'Robust, serverless automation and data orchestration using modern CI/CD patterns.', 
+    title: 'E-commerce & SaaS', 
+    desc: 'Serverless data orchestration and automated backends for your applications.', 
     tag: 'Backend',
     href: '/services/backend-pipelines'
   },
   { 
-    title: 'Technical Strategy', 
-    desc: 'Architectural consulting for high-growth technical teams navigating complex stacks.', 
+    title: 'SEO & AEO strategy', 
+    desc: 'Architectural consulting and AI search engine optimization.', 
     tag: 'Consulting',
     href: '/services/technical-strategy'
   },
   { 
-    title: 'Performance Audits', 
-    desc: 'Deep-dive analytical reporting and optimization for mission-critical applications.', 
+    title: 'Performance audits', 
+    desc: 'Analytical reporting and optimization for mission-critical applications.', 
     tag: 'Analytics',
     href: '/services/performance-audits'
   },

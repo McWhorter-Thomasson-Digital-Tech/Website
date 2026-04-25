@@ -5,7 +5,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "McWhorter-Thomasson Digital Technologies",
-    "alternateName": "MTDT Agency",
+    "alternateName": "MTDT",
     "url": "https://mtdigitaltech.com",
     "logo": "https://mtdigitaltech.com/logo.png",
     "founder": [
@@ -18,7 +18,7 @@ export default function JsonLd() {
         "name": "Graham Thomasson"
       }
     ],
-    "description": "High-velocity React ecosystem engineering and immutable backend pipeline automation for modern innovators.",
+    "description": "MTDT Agency builds high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search and conversion.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-704-254-0084",
@@ -32,7 +32,10 @@ export default function JsonLd() {
       "addressCountry": "US"
     },
     "sameAs": [
-      "https://mtdigitaltech.com"
+      "https://instagram.com/mtdigitaltech",
+      "https://linkedin.com/company/mtdigitaltech",
+      "https://x.com/mtdigitaltech",
+      "https://github.com/mtdigitaltech"
     ]
   };
 

@@ -6,7 +6,7 @@ import styles from '../page.module.css';
 
 export const metadata = {
   title: "Technical Strategy & Consulting | MTDT Agency",
-  description: "Fractional CTO consulting and architectural planning for high-growth technical teams navigating complex technology stacks.",
+  description: "Fractional CTO consulting, system architecture planning, and technology stack evaluation for teams scaling from zero to enterprise.",
 };
 
 export default function TechnicalStrategyPage() {
