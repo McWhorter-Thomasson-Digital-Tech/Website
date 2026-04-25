@@ -4,6 +4,7 @@ import JsonLd from "../components/seo/JsonLd";
 import FaqSchema from "../components/seo/FaqSchema";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { MouseGlow } from "@/components/ui/MouseGlow";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -54,8 +55,16 @@ export default function RootLayout({
         <JsonLd />
         <FaqSchema />
       </head>
-      <body>
+      <body className="relative min-h-screen overflow-x-hidden">
+        {/* Animated Multicolored Background Container */}
+        <div className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden bg-slate-950">
+          <div className="absolute -top-[30%] -left-[10%] w-[70vw] h-[70vw] rounded-full bg-blue-600/30 blur-[120px] mix-blend-screen animate-blob"></div>
+          <div className="absolute top-[20%] -right-[20%] w-[60vw] h-[60vw] rounded-full bg-purple-600/30 blur-[120px] mix-blend-screen animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-[40%] left-[20%] w-[80vw] h-[80vw] rounded-full bg-emerald-600/30 blur-[120px] mix-blend-screen animate-blob animation-delay-4000"></div>
+        </div>
+        
         {children}
+        <MouseGlow />
       </body>
     </html>
   );

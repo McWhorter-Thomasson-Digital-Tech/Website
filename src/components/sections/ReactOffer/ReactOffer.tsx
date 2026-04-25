@@ -19,17 +19,17 @@ export function ReactOffer() {
 
   const pricing: Record<BillingCycle, { price: string; detail: string; savings?: string }> = {
     annually: {
-      price: '139',
+      price: '300',
       detail: 'Billed annually',
-      savings: 'Save 30% annually',
+      savings: 'Save 25% annually',
     },
     quarterly: {
-      price: '159',
+      price: '350',
       detail: 'Billed quarterly',
-      savings: 'Save 20% quarterly',
+      savings: 'Save 12.5% quarterly',
     },
     monthly: {
-      price: '199',
+      price: '400',
       detail: 'Billed monthly',
       savings: 'none',
     },

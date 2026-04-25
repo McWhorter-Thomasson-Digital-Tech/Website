@@ -61,13 +61,15 @@
 }
 
 .card {
-  background: color-mix(in srgb, var(--card), transparent 40%);
-  backdrop-filter: blur(20px);
-  border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
   border-radius: 1rem;
   padding: 2rem;
   cursor: pointer;
   transition: all 200ms ease;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
@@ -112,9 +114,10 @@
 
 /* CTA Banner */
 .ctaBanner {
-  background: color-mix(in srgb, var(--card), transparent 40%);
-  backdrop-filter: blur(20px);
-  border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
   border-radius: 1rem;
   padding: 2rem;
   display: flex;
@@ -122,6 +125,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 640px) {
