@@ -21,6 +21,7 @@ export function Footer() {
               <li><Link href="/about" className={styles.link}>About Us</Link></li>
               <li><Link href="/services" className={styles.link}>Services</Link></li>
               <li><Link href="/pricing" className={styles.link}>Pricing</Link></li>
+              <li><Link href="/faq" className={styles.link}>FAQ</Link></li>
               <li><Link href="/contact" className={styles.link}>Contact</Link></li>
             </ul>
           </div>

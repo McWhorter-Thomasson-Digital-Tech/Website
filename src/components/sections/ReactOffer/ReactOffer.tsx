@@ -18,13 +18,13 @@ interface PackageConfig {
 const packages: PackageConfig[] = [
   {
     id: 'website',
-    name: 'High-speed Custom React Website',
-    description: 'Scalable architecture for modern innovators.',
+    name: 'Performance Marketing Site',
+    description: 'Blazing-fast, SEO-optimized static architecture designed to capture leads and convert.',
     features: [
-      'Custom Next.js Development',
-      'Advanced Search Engine Optimization',
-      'Advanced Generative Engine Optimization',
-      'Custom API Integrations',
+      'High-Performance Next.js Build',
+      'Technical SEO & Core Web Vitals',
+      'Generative Engine Optimization (GEO)',
+      'Essential Form & API Integrations',
     ],
     pricing: {
       annually: { price: '300', detail: 'Billed annually', savings: 'Save 25% annually' },
@@ -33,15 +33,30 @@ const packages: PackageConfig[] = [
     }
   },
   {
-    id: 'fullstack',
-    name: 'Full Stack App & Database',
-    description: 'Complete data architecture and immutable pipelines.',
+    id: 'ecommerce',
+    name: 'Headless Digital Storefront',
+    description: 'Omnichannel headless commerce with sub-second page loads engineered to maximize revenue.',
     features: [
-      'Custom Next.js Development',
-      'Full Database Creation & Management',
-      'User Authentication & Security',
-      'Advanced Backend API Ecosystems',
-      'Advanced Generative Engine Optimization',
+      'Headless Next.js Commerce Architecture',
+      'Shopify, Stripe & PIM Integrations',
+      'Global Cart & Edge State Management',
+      'Programmatic Product Page SEO & GEO',
+    ],
+    pricing: {
+      annually: { price: '600', detail: 'Billed annually', savings: 'Save 25% annually' },
+      quarterly: { price: '700', detail: 'Billed quarterly', savings: 'Save 12.5% quarterly' },
+      monthly: { price: '800', detail: 'Billed monthly', savings: 'none' },
+    }
+  },
+  {
+    id: 'fullstack',
+    name: 'Custom Web Application',
+    description: 'Enterprise-grade full-stack engineering with scalable, immutable backend pipelines.',
+    features: [
+      'Modern React Server Components (RSC)',
+      'Custom Database Architecture & Scaling',
+      'Advanced Authentication & RBAC',
+      'Complex Third-Party API Orchestration',
     ],
     pricing: {
       annually: { price: '1200', detail: 'Billed annually', savings: 'Save 20% annually' },
@@ -79,23 +94,31 @@ export function ReactOffer() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollRef.current) {
-        const scrollLeft = scrollRef.current.scrollLeft;
-        const itemWidth = scrollRef.current.offsetWidth;
-        // Use a small buffer to ensure snapping detection
-        const index = Math.round(scrollLeft / itemWidth);
-        if (index !== activeIndex) {
-            setActiveIndex(index);
-        }
-      }
-    };
     const el = scrollRef.current;
-    if (el) {
-      el.addEventListener('scroll', handleScroll, { passive: true });
-      return () => el.removeEventListener('scroll', handleScroll);
-    }
-  }, [activeIndex]);
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Find the index of the intersecting child
+            const index = Array.from(el.children).indexOf(entry.target);
+            if (index !== -1) {
+              setActiveIndex(index);
+            }
+          }
+        });
+      },
+      {
+        root: el,
+        threshold: 0.6, // Fire when 60% of the element is visible
+      }
+    );
+
+    Array.from(el.children).forEach((child) => observer.observe(child));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="react-websites" className={styles.section}>

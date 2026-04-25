@@ -14,6 +14,7 @@ export function Header() {
           <Link href="/services" className={styles.navLink}>Services</Link>
           <Link href="/pricing" className={styles.navLink}>Pricing</Link>
           <Link href="/about" className={styles.navLink}>About</Link>
+          <Link href="/faq" className={styles.navLink}>FAQ</Link>
         </nav>
 
         <Link href="/contact" className={styles.ctaButton}>

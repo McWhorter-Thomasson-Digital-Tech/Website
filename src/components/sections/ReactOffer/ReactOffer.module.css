@@ -1,10 +1,10 @@
 .section {
   width: 100%;
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 @media (min-width: 640px) {
-  .section { padding: 8rem 0; }
+  .section { padding: 6rem 0; }
 }
 
 .container {
@@ -120,6 +120,13 @@
   -ms-overflow-style: none;  /* IE and Edge */
   gap: 2rem;
   padding-bottom: 2rem;
+
+  /* Break out to absolute edge-to-edge of viewport */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* Pads exactly back to the central bounds of an 80rem max-width wrapper */
+  padding-left: max(1.5rem, calc((100vw - 80rem) / 2));
+  padding-right: max(1.5rem, calc((100vw - 80rem) / 2));
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -129,7 +136,6 @@
 .cardWrapper {
   flex: 0 0 100%;
   scroll-snap-align: center;
-  min-width: 100%;
 }
 
 /* Pricing Card Inner Layer */

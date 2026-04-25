@@ -1,34 +1,48 @@
 .footer {
-  width: 100%;
-  border-top: 1px solid var(--border);
+  width: calc(100% - 2rem);
+  max-width: 80rem;
+  margin: 0 auto 2rem auto;
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
   background-color: var(--background);
-  padding-top: 4rem;
-  padding-bottom: 2rem;
 }
 
 .container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
-  .container { padding: 0 2rem; }
+  .footer {
+    width: calc(100% - 4rem);
+    padding: 3rem 2.5rem 2rem 2.5rem;
+  }
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
-  .grid { grid-template-columns: 1fr 1fr; }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 1024px) {
-  .grid { grid-template-columns: 2fr 1fr 1fr; }
+  .grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
 }
 
 /* Brand Column */
@@ -101,7 +115,9 @@
 }
 
 @media (min-width: 640px) {
-  .bottomBar { flex-direction: row; }
+  .bottomBar {
+    flex-direction: row;
+  }
 }
 
 .copyright {
