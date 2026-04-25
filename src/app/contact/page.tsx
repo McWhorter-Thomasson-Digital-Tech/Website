@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer/Footer";
 import styles from './page.module.css';
 
 export const metadata = {
-  title: "Contact MTDT | Initialize Project Deployment",
-  description: "Connect with Matthew McWhorter and Graham Thomasson to initialize your digital engineering project. Awaiting mission parameters.",
+  title: "Contact Us | MTDT Agency",
+  description: "Connect with MTDT Agency to start your next business website, e-commerce storefront, or SaaS platform project.",
 };
 
 export default function ContactPage() {
@@ -15,9 +15,9 @@ export default function ContactPage() {
         <section className={styles.container}>
           <div className={styles.header}>
             <p className={styles.label}>Contact</p>
-            <h1 className={styles.heading}>Let&apos;s Build Together</h1>
+            <h1 className={styles.heading}>Let&apos;s build together</h1>
             <p className={styles.subtitle}>
-              Tell us about your project and we&apos;ll get back to you within 24 hours.
+              Tell us about your project and we&apos;ll reply within 24 hours.
             </p>
           </div>
           
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 />
               </div>
               <button type="submit" className={styles.submitButton}>
-                Send Message
+                Send message
               </button>
             </form>
           </div>

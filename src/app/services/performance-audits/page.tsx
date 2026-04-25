@@ -5,8 +5,8 @@ import Link from 'next/link';
 import styles from '../page.module.css';
 
 export const metadata = {
-  title: "Performance Audits & Optimization | MTDT Agency",
-  description: "Deep-dive Core Web Vitals analysis, Lighthouse auditing, render waterfall elimination, and SEO/GEO optimization for mission-critical web applications.",
+  title: "Performance & SEO Audits | MTDT Agency",
+  description: "Forensic-level performance analysis and actionable optimization roadmaps to measurably improve your website's Core Web Vitals and AI search visibility.",
 };
 
 export default function PerformanceAuditsPage() {

@@ -1,0 +1,33 @@
+# MTDT Agency (McWhorter-Thomasson Digital Technologies) - Full Documentation
+
+> We build digital machines that accelerate human innovation through high-velocity React ecosystems and immutable backend pipelines.
+
+## Founders
+- **Matthew McWhorter**: Veteran software engineer specializing in complex digital systems.
+- **Graham Thomasson**: Veteran software engineer specializing in scalable backend automation.
+
+## Core Services
+
+### 1. High-Velocity React Ecosystems
+We build immutable frontend architectures and robust databases that eliminate bottlenecks and maximize performance.
+- **Performance Marketing Site**: Blazing-fast, SEO-optimized static architecture designed to capture leads and convert. Includes High-Performance Next.js Build, Technical SEO & Core Web Vitals, Generative Engine Optimization (GEO). From $139/mo.
+- **Headless Digital Storefront**: Omnichannel headless commerce with sub-second page loads engineered to maximize revenue. Includes Headless Next.js Commerce Architecture, Shopify/Stripe/PIM Integrations, Global Cart & Edge State Management, Programmatic Product Page SEO.
+- **Custom Web Application**: Enterprise-grade full-stack engineering with scalable, immutable backend pipelines. Includes Modern React Server Components (RSC), Custom Database Architecture, Advanced Authentication & RBAC, Complex API Orchestration.
+
+### 2. Immutable Backend Pipelines
+Orchestrating secure, predictable, and fully automated data flows for mission-critical systems.
+- Automated Workflows: Eliminate manual intervention with self-healing pipelines.
+- Elastic Scaling: Dynamic resource allocation based on real-time telemetry.
+- Security by Default: SOC2 compliant architectures with zero-trust protocols.
+
+### 3. Technical Strategy & Performance Audits
+Architectural consulting for high-growth technical teams navigating complex stacks. Deep-dive analytical reporting and optimization for mission-critical applications.
+
+## Contact Information
+- Email: matt@mtdigitaltech.com
+- Phone: +1-704-254-0084
+- Location: Lynchburg, VA, United States
+- Website: https://mtdigitaltech.com
+- Instagram: https://instagram.com/mtdigitaltech
+- LinkedIn: https://linkedin.com/company/mtdigitaltech
+- Twitter: https://x.com/mtdigitaltech

@@ -5,14 +5,14 @@ import { Shield, Globe, Layers } from 'lucide-react';
 import styles from './page.module.css';
 
 export const metadata = {
-  title: "Pricing & Deployment Packages",
-  description: "Transparent resource allocation for high-velocity engineering. Choose the CORE ENGINE or custom immutable pipelines for your mission.",
+  title: "Pricing & Packages | MTDT Agency",
+  description: "Transparent pricing for business websites, e-commerce storefronts, and custom SaaS platforms.",
 };
 
 const specs = [
-  { icon: Layers, title: 'Immutable Architecture', desc: 'Every deployment is versioned and isolated.' },
-  { icon: Globe, title: 'Global Delivery', desc: 'Sub-100ms latency across all geographic zones.' },
-  { icon: Shield, title: 'Ironclad Security', desc: 'Real-time threat detection and remediation.' },
+  { icon: Layers, title: 'Zero-downtime architecture', desc: 'Every deployment is versioned and isolated.' },
+  { icon: Globe, title: 'Global edge delivery', desc: 'Sub-100ms latency across all geographic zones.' },
+  { icon: Shield, title: 'Secure by default', desc: 'Real-time threat detection and remediation.' },
 ];
 
 export default function PricingPage() {
@@ -22,16 +22,16 @@ export default function PricingPage() {
       <main className={styles.main}>
         <section className={styles.heroSection}>
           <p className={styles.label}>Pricing</p>
-          <h1 className={styles.heading}>Transparent, Scalable Pricing</h1>
+          <h1 className={styles.heading}>Transparent pricing</h1>
           <p className={styles.subtitle}>
-            High-velocity engineering requires clear, transparent resource allocation. Choose the machine that fits your mission.
+            Choose the right plan for your team.
           </p>
         </section>
 
         <ReactOffer />
         
         <section className={styles.specsSection}>
-          <h2 className={styles.specsTitle}>Built for Scale</h2>
+          <h2 className={styles.specsTitle}>Built for scale</h2>
           <div className={styles.specsGrid}>
             {specs.map((item) => (
               <div key={item.title} className={styles.specCard}>

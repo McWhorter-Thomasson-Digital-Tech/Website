@@ -6,8 +6,8 @@ import { ServicesCards } from "@/components/sections/ServicesCards/ServicesCards
 import styles from './page.module.css';
 
 export const metadata = {
-  title: "Core Services | High-Velocity Digital Engineering",
-  description: "From React Ecosystems to Immutable Backend Pipelines, explore our core software engineering services designed for the digital vanguard.",
+  title: "Our Services | MTDT Agency",
+  description: "Explore our core services: high-performance business websites, SEO & AEO strategy, e-commerce, and custom SaaS platforms.",
 };
 
 export default function ServicesPage() {
@@ -18,10 +18,10 @@ export default function ServicesPage() {
         <section className={styles.heroSection}>
           <p className={styles.label}>Our Services</p>
           <h1 className={styles.heading}>
-            Engineering Precision for the Digital Vanguard
+            Engineering precision for modern teams
           </h1>
           <p className={styles.subtitle}>
-            High-velocity solutions for complex technical challenges. From frontend to backend, we architect systems that scale.
+            Fast solutions for complex technical challenges. We specialize in business websites and custom SaaS platforms.
           </p>
         </section>
 

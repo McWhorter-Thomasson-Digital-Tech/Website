@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer/Footer";
 import styles from './page.module.css';
 
 export const metadata = {
-  title: "About MTDT | Digital Engineering Architects",
-  description: "Learn about MTDT (McWhorter-Thomasson Digital Technologies), led by Matthew McWhorter and Graham Thomasson. We build digital machines that accelerate innovation.",
+  title: "About Us | MTDT Agency",
+  description: "Learn about MTDT Agency, led by Matthew McWhorter and Graham Thomasson. We build high-performance websites and custom SaaS platforms.",
 };
 
 export default function AboutPage() {
@@ -15,23 +15,23 @@ export default function AboutPage() {
         <section className={styles.container}>
           <div className={styles.header}>
             <p className={styles.label}>About Us</p>
-            <h1 className={styles.heading}>Digital Engineering Architects</h1>
+            <h1 className={styles.heading}>About us</h1>
             <p className={styles.subtitle}>
-              Get to know the team building the next generation of digital infrastructure.
+              Meet the team building your digital future.
             </p>
           </div>
           
           <div className={styles.card}>
-            <h2 className={styles.cardTitle}>Our Mission</h2>
+            <h2 className={styles.cardTitle}>Our mission</h2>
             <p className={styles.cardText}>
-              We operate at the intersection of raw engineering and architectural aesthetics. MTDT (McWhorter-Thomasson Digital Technologies) builds digital machines that accelerate human innovation through high-velocity React ecosystems and immutable backend pipelines.
+              We build digital systems that help you move faster. We focus on business websites, SEO, and custom SaaS platforms.
             </p>
           </div>
           
           <div className={styles.card}>
-            <h2 className={styles.cardTitle}>The Architects</h2>
+            <h2 className={styles.cardTitle}>The architects</h2>
             <p className={styles.cardText}>
-              Led by Matthew McWhorter and Graham Thomasson, our collective is composed of specialized architects, automation experts, and UI engineers who refuse to accept generic solutions.
+              Matthew McWhorter and Graham Thomasson lead a team of full-stack engineers and UI designers.
             </p>
           </div>
         </section>
