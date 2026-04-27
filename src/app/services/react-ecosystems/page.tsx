@@ -5,8 +5,8 @@ import Link from 'next/link';
 import styles from '../page.module.css';
 
 export const metadata = {
-  title: "Modern Web Apps & SaaS | MTDT Agency",
-  description: "High-performance frontend architectures built with React and Next.js for exceptional user experiences and SEO indexability.",
+  title: "Premium Web Apps & SaaS | MTDT Agency",
+  description: "High-performance digital experiences architected with React and Next.js for ambitious teams requiring exceptional speed and visibility.",
 };
 
 export default function ReactEcosystemsPage() {
@@ -18,12 +18,12 @@ export default function ReactEcosystemsPage() {
           <Link href="/services" className={styles.label} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
             <ArrowLeft size={16} /> Back to Services
           </Link>
-          <p className={styles.label}>Frontend Engineering</p>
+          <p className={styles.label}>Premium Engineering</p>
           <h1 className={styles.heading}>
-            High-Velocity React Ecosystems
+            World-Class Digital Experiences
           </h1>
           <p className={styles.subtitle}>
-            We engineer immutable, scalable frontend architectures using Next.js and modern React patterns. Sub-second page loads, exceptional Core Web Vitals, and premium user experiences are the baseline, not the goal.
+            We architect scalable, high-performance platforms using modern React standards. Sub-second load times, exceptional user experience, and premium visibility are the foundation of every partnership.
           </p>
         </section>
 

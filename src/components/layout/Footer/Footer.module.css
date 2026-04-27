@@ -13,6 +13,7 @@
   overflow: hidden;
   z-index: 10;
   background-color: var(--background);
+  margin-bottom: 2rem;
 }
 
 .container {
@@ -58,6 +59,10 @@
 
 .brandLogo:hover {
   color: var(--primary);
+}
+
+.footerLogo {
+  object-fit: contain;
 }
 
 .brandDesc {

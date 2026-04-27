@@ -18,7 +18,7 @@ export function Hero() {
         </h1>
         
         <p className={styles.subtitle}>
-          We build lightning-fast business websites and SaaS platforms. Every project is optimized for lead generation and maximum performance.
+          We partner with ambitious teams to architect lightning-fast business websites and SaaS platforms. Every project is designed for modern search visibility and global performance.
         </p>
         
         <div className={styles.buttons}>

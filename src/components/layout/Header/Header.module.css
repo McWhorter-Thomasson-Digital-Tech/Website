@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  top: 1rem;
+  top: 2rem;
   left: 1rem;
   right: 1rem;
   z-index: 50;
@@ -14,10 +14,17 @@
   border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
   border-radius: 1rem;
   padding: 0 1.5rem;
-  height: 4rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scrolled .navBar {
+  height: 3.5rem;
+  background: color-mix(in srgb, var(--card), transparent 20%);
+  border-radius: 0.75rem;
 }
 
 @media (min-width: 640px) {
@@ -27,15 +34,26 @@
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--foreground);
-  transition: color 200ms ease;
+  display: flex;
+  align-items: center;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo:hover {
-  color: var(--primary);
+.logoImage {
+  object-fit: contain;
+  opacity: 0.7;
+  transform: scale(1);
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+}
+
+.scrolled .logoImage {
+  transform: scale(0.4);
+  opacity: 0.9;
+}
+
+.logo:hover .logoImage {
+  opacity: 1;
 }
 
 .nav {

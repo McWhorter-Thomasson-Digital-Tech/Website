@@ -4,7 +4,9 @@
 }
 
 @media (min-width: 640px) {
-  .section { padding: 6rem 0; }
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 .container {
@@ -14,7 +16,9 @@
 }
 
 @media (min-width: 640px) {
-  .container { padding: 0 2rem; }
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 /* Section Header */
@@ -39,8 +43,17 @@
   margin-bottom: 1rem;
 }
 
-@media (min-width: 640px) { .title { font-size: 2.25rem; } }
-@media (min-width: 768px) { .title { font-size: 3rem; } }
+@media (min-width: 640px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
 
 .description {
   font-size: 1.125rem;
@@ -48,28 +61,80 @@
   line-height: 1.75;
 }
 
-/* Feature Cards Grid */
+/* Feature Cards Grid -> Horizontal Scroll (Full Bleed) */
 .cardsGrid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  overflow-x: auto;
   gap: 1.5rem;
   margin-bottom: 3rem;
+  padding: 1rem 1.5rem 3rem 1.5rem;
+  /* Matches container padding on mobile */
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-@media (min-width: 768px) {
-  .cardsGrid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 640px) {
+  .cardsGrid {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+}
+
+/* Calculate margin to align with 80rem center container on large screens */
+@media (min-width: 80rem) {
+  .cardsGrid {
+    padding-left: calc((100vw - 80rem + 4rem) / 2);
+    padding-right: calc((100vw - 80rem + 4rem) / 2);
+    margin-left: calc((80rem - 100vw - 4rem) / 2);
+    margin-right: calc((80rem - 100vw - 4rem) / 2);
+  }
+}
+
+.cardsGrid::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
 }
 
 .card {
+  
+  /* Nearly full screen on mobile */
+  scroll-snap-align: center;
   background: color-mix(in srgb, var(--background), transparent 70%);
   backdrop-filter: blur(30px) saturate(150%);
   -webkit-backdrop-filter: blur(30px) saturate(150%);
   border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   padding: 2rem;
-  cursor: pointer;
+  cursor: grab;
   transition: all 200ms ease;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 450px) {
+  .card {
+    flex: 0 0 calc(100vw - 5rem);
+    /* Large focus card on tablet */
+    padding: 3.5rem;
+  }
+}
+
+@media (min-width: 450px) {
+  .card {
+    flex: 0 0 30rem;
+    /* Fixed large width for desktop consistency */
+    scroll-snap-align: center;
+  }
 }
 
 .card:hover {

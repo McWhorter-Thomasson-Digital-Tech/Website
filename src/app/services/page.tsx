@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 export const metadata = {
   title: "Our Services | MTDT Agency",
-  description: "Explore our core services: high-performance business websites, SEO & AEO strategy, e-commerce, and custom SaaS platforms.",
+  description: "Explore our premium services: high-performance business websites, strategic search visibility (AEO/GEO), e-commerce, and custom SaaS platforms.",
 };
 
 export default function ServicesPage() {
@@ -18,10 +18,10 @@ export default function ServicesPage() {
         <section className={styles.heroSection}>
           <p className={styles.label}>Our Services</p>
           <h1 className={styles.heading}>
-            Engineering precision for modern teams
+            Premium digital architecture for ambitious teams
           </h1>
           <p className={styles.subtitle}>
-            Fast solutions for complex technical challenges. We specialize in business websites and custom SaaS platforms.
+            Strategic solutions for complex digital challenges. We partner with you to build high-performance business websites and custom SaaS platforms.
           </p>
         </section>
 
