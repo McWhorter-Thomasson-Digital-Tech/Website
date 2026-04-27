@@ -1,0 +1,16 @@
+# MTDT (McWhorter-Thomasson Digital Technologies)
+
+> We engineer high-velocity React ecosystems and immutable backend pipelines for modern innovators.
+
+## Services
+- High-Performance React Websites (Next.js)
+- Headless Digital Storefronts
+- Custom Web Applications (RSC, Advanced Auth, DB Scaling)
+- Backend Engineering (Automated Workflows, SOC2 Compliant Architectures)
+
+## Contact
+- Founders: Matthew McWhorter, Graham Thomasson
+- Email: matt@mtdigitaltech.com
+- Website: https://mtdigitaltech.com
+
+For detailed service information, technical documentation, and pricing, refer to the full document: [llms-full.txt](https://mtdigitaltech.com/llms-full.txt)

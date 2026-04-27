@@ -1,0 +1,168 @@
+.section {
+  width: 100%;
+  padding: 4rem 0;
+}
+
+@media (min-width: 640px) {
+  .section { padding: 6rem 0; }
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container { padding: 0 2rem; }
+}
+
+/* Section Header */
+.sectionHeader {
+  max-width: 42rem;
+  margin-bottom: 4rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) { .title { font-size: 2.25rem; } }
+@media (min-width: 768px) { .title { font-size: 3rem; } }
+
+.description {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+}
+
+/* Feature Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .cardsGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
+  border-radius: 1rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--primary), transparent 70%);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--primary), transparent 85%);
+}
+
+.cardIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: color-mix(in srgb, var(--primary), transparent 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background-color 200ms ease;
+}
+
+.card:hover .cardIcon {
+  background-color: color-mix(in srgb, var(--primary), transparent 80%);
+}
+
+.cardIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--primary);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  color: var(--muted-foreground);
+  line-height: 1.75;
+}
+
+/* CTA Banner */
+.ctaBanner {
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 640px) {
+  .ctaBanner {
+    flex-direction: row;
+    padding: 3rem;
+  }
+}
+
+.ctaTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.ctaDesc {
+  color: var(--muted-foreground);
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 2rem;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,130 @@
+.main {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+}
+
+.heroSection {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 640px) {
+  .heroSection { padding: 0 2rem; }
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  max-width: 48rem;
+}
+
+@media (min-width: 640px) { .heading { font-size: 3rem; } }
+@media (min-width: 768px) { .heading { font-size: 3.75rem; } }
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  max-width: 42rem;
+}
+
+/* Service Cards */
+.cardsSection {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 640px) {
+  .cardsSection { padding: 0 2rem; }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cardsGrid { grid-template-columns: 1fr 1fr; }
+}
+
+.card {
+  background: color-mix(in srgb, var(--card), transparent 40%);
+  backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
+  border-radius: 1rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+@media (min-width: 640px) {
+  .card { padding: 2.5rem; }
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--primary), transparent 70%);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--primary), transparent 85%);
+}
+
+.cardTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary), transparent 90%);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.cardArrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+}
+
+.cardArrow svg {
+  width: 1rem;
+  height: 1rem;
+}

@@ -1,0 +1,126 @@
+.footer {
+  width: calc(100% - 2rem);
+  max-width: 80rem;
+  margin: auto;
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
+  background: color-mix(in srgb, var(--background), transparent 70%);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  background-color: var(--background);
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    width: calc(100% - 4rem);
+    padding: 3rem 2.5rem 2rem 2.5rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+/* Brand Column */
+.brandLogo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: 1rem;
+  transition: color 200ms ease;
+}
+
+.brandLogo:hover {
+  color: var(--primary);
+}
+
+.brandDesc {
+  color: var(--muted-foreground);
+  max-width: 28rem;
+  line-height: 1.75;
+}
+
+/* Link Columns */
+.columnTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.link {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color 200ms ease;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--foreground);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  list-style: none;
+  padding: 0;
+}
+
+/* Bottom Bar */
+.bottomBar {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .bottomBar {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
