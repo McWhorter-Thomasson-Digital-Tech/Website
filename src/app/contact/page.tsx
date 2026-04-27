@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
+import { ContactForm } from "./ContactForm";
 import styles from './page.module.css';
 
 export const metadata = {
@@ -21,42 +22,7 @@ export default function ContactPage() {
             </p>
           </div>
           
-          <div className={styles.card}>
-            <form className={styles.form}>
-              <div className={styles.fieldGrid}>
-                <div className={styles.fieldGroup}>
-                  <label htmlFor="name" className={styles.fieldLabel}>Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    placeholder="Your name" 
-                    className={styles.input} 
-                  />
-                </div>
-                <div className={styles.fieldGroup}>
-                  <label htmlFor="email" className={styles.fieldLabel}>Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    placeholder="you@example.com" 
-                    className={styles.input} 
-                  />
-                </div>
-              </div>
-              <div className={styles.fieldGroup}>
-                <label htmlFor="message" className={styles.fieldLabel}>Message</label>
-                <textarea 
-                  id="message" 
-                  rows={6} 
-                  placeholder="Tell us about your project..." 
-                  className={styles.textarea}
-                />
-              </div>
-              <button type="submit" className={styles.submitButton}>
-                Send message
-              </button>
-            </form>
-          </div>
+          <ContactForm />
         </section>
       </main>
       <Footer />

@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
@@ -7,14 +7,22 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.grid}>
-          
+
           <div>
-            <Link href="/" className={styles.brandLogo}>MTDT</Link>
+            <Link href="/" className={styles.brandLogo}>
+              <Image 
+                src="/Logo_Clear_Center.png" 
+                alt="MTDT Agency Logo" 
+                width={100} 
+                height={32} 
+                className={styles.footerLogo}
+              />
+            </Link>
             <p className={styles.brandDesc}>
               We build digital machines that accelerate human innovation through high-velocity React ecosystems and immutable backend pipelines.
             </p>
           </div>
-          
+
           <div>
             <h4 className={styles.columnTitle}>Navigation</h4>
             <ul className={styles.linkList}>
@@ -25,17 +33,17 @@ export function Footer() {
               <li><Link href="/contact" className={styles.link}>Contact</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className={styles.columnTitle}>Get in Touch</h4>
             <ul className={styles.contactInfo}>
-              <li>hello@mtdigitaltech.com</li>
+              <li><a href="mailto:contact@mtdigitaltech.com">contact@mtdigitaltech.com</a></li>
               <li>United States</li>
             </ul>
           </div>
-          
+
         </div>
-        
+
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
             &copy; {new Date().getFullYear()} McWhorter-Thomasson Digital Technologies. All rights reserved.

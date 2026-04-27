@@ -6,25 +6,25 @@ import styles from './ServicesCards.module.css';
 const services = [
   { 
     title: 'Business websites', 
-    desc: 'Fast, scalable business websites optimized for search and conversion.', 
+    desc: 'Premium digital experiences designed for speed, visibility, and conversion.', 
     tag: 'Frontend',
     href: '/services/react-ecosystems'
   },
   { 
     title: 'E-commerce & SaaS', 
-    desc: 'Serverless data orchestration and automated backends for your applications.', 
+    desc: 'Scalable storefronts and specialized backends designed to power your growth.', 
     tag: 'Backend',
     href: '/services/backend-pipelines'
   },
   { 
-    title: 'SEO & AEO strategy', 
-    desc: 'Architectural consulting and AI search engine optimization.', 
+    title: 'SEO & GEO Strategy', 
+    desc: 'Ensuring people—and modern answer engines—find your business. We elevate your foundation for Search (SEO) and Generative search (GEO).', 
     tag: 'Consulting',
     href: '/services/technical-strategy'
   },
   { 
     title: 'Performance audits', 
-    desc: 'Analytical reporting and optimization for mission-critical applications.', 
+    desc: 'Concise, analytical reporting to optimize your mission-critical applications.', 
     tag: 'Analytics',
     href: '/services/performance-audits'
   },

@@ -4,7 +4,6 @@ import { Hero } from "@/components/sections/Hero/Hero";
 import { ServicesCards } from "@/components/sections/ServicesCards/ServicesCards";
 import { ReactOffer } from "@/components/sections/ReactOffer/ReactOffer";
 import { BackendAutomation } from "@/components/sections/BackendAutomation/BackendAutomation";
-import { TechnicalDeepDive } from "@/components/sections/TechnicalDeepDive/TechnicalDeepDive";
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <ServicesCards />
         <ReactOffer />
         <BackendAutomation />
-        <TechnicalDeepDive />
       </main>
       <Footer />
     </>

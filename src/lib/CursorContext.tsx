@@ -10,12 +10,12 @@ interface CursorContextValue {
 }
 
 const CursorContext = createContext<CursorContextValue>({
-  cursorType: 'snake',
-  setCursorType: () => {},
+  cursorType: 'glow',
+  setCursorType: () => { },
 });
 
 export function CursorProvider({ children }: { children: ReactNode }) {
-  const [cursorType, setCursorType] = useState<CursorType>('snake');
+  const [cursorType, setCursorType] = useState<CursorType>('glow');
 
   return (
     <CursorContext.Provider value={{ cursorType, setCursorType }}>

@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mtdigitaltech.com"),
   title: {
     template: "%s | MTDT Agency",
-    default: "MTDT Agency | Websites & SaaS for Modern Business",
+    default: "MTDT Agency | High-End Websites & SaaS for Modern Business",
   },
-  description: "MTDT Agency builds high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search and conversion.",
-  keywords: ["Business Websites", "SaaS Engineering", "E-commerce Development", "AI Search Optimization", "AEO", "MTDT Agency", "Matthew McWhorter", "Graham Thomasson"],
+  description: "MTDT Agency architectures high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for modern search visibility and conversion.",
+  keywords: ["Premium Business Websites", "SaaS Engineering", "E-commerce Development", "Modern Search Visibility", "AEO", "GEO", "MTDT Agency", "Matthew McWhorter", "Graham Thomasson"],
   authors: [{ name: "Matthew McWhorter" }, { name: "Graham Thomasson" }],
   openGraph: {
-    title: "MTDT Agency | Websites & SaaS for Modern Business",
-    description: "High-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search.",
+    title: "MTDT Agency | High-End Websites & SaaS for Modern Business",
+    description: "High-performance digital platforms architected for visibility, speed, and conversion.",
     url: "https://mtdigitaltech.com",
     siteName: "McWhorter-Thomasson Digital Technologies",
 
@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://mtdigitaltech.com",
+  },
+  icons: {
+    icon: "/Logo_Clear_Center.png",
+    apple: "/Logo_Clear_Center.png",
   },
 };
 

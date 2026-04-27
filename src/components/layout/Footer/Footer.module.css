@@ -60,6 +60,10 @@
   color: var(--primary);
 }
 
+.footerLogo {
+  object-fit: contain;
+}
+
 .brandDesc {
   color: var(--muted-foreground);
   max-width: 28rem;
