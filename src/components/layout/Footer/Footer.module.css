@@ -1,7 +1,7 @@
 .footer {
   width: calc(100% - 2rem);
   max-width: 80rem;
-  margin: 0 auto 2rem auto;
+  margin: auto;
   border-radius: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--foreground), transparent 85%);
   background: color-mix(in srgb, var(--background), transparent 70%);
