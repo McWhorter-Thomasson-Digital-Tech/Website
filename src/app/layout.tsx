@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import JsonLd from "../components/seo/JsonLd";
 import FaqSchema from "../components/seo/FaqSchema";
@@ -39,6 +39,20 @@ export const metadata: Metadata = {
     icon: "/Logo_Clear_Center.png",
     apple: "/Logo_Clear_Center.png",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
