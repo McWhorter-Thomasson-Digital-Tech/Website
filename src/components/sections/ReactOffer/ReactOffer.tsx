@@ -133,36 +133,6 @@ export function ReactOffer() {
           </p>
         </div>
 
-        {/* Swipe Controls / Indicators */}
-        <div className={styles.swipeControls}>
-          <button 
-            className={styles.swipeArrow} 
-            onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
-            disabled={activeIndex === 0}
-          >
-            <ChevronLeft size={20} />
-          </button>
-          
-          <div className={styles.dots}>
-            {packages.map((_, i) => (
-              <button 
-                key={i} 
-                className={`${styles.dot} ${activeIndex === i ? styles.activeDot : ''}`}
-                onClick={() => scrollTo(i)}
-                aria-label={`Go to package ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button 
-            className={styles.swipeArrow} 
-            onClick={() => scrollTo(Math.min(packages.length - 1, activeIndex + 1))}
-            disabled={activeIndex === packages.length - 1}
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-
         {/* Swipeable Container */}
         <div className={styles.scrollContainer} ref={scrollRef}>
           {packages.map((pkg) => {
@@ -234,6 +204,36 @@ export function ReactOffer() {
               </div>
             );
           })}
+        </div>
+
+        {/* Swipe Controls / Indicators */}
+        <div className={styles.swipeControls}>
+          <button 
+            className={styles.swipeArrow} 
+            onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+            disabled={activeIndex === 0}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          
+          <div className={styles.dots}>
+            {packages.map((_, i) => (
+              <button 
+                key={i} 
+                className={`${styles.dot} ${activeIndex === i ? styles.activeDot : ''}`}
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to package ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button 
+            className={styles.swipeArrow} 
+            onClick={() => scrollTo(Math.min(packages.length - 1, activeIndex + 1))}
+            disabled={activeIndex === packages.length - 1}
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
 
       </div>
