@@ -5,10 +5,6 @@ import styles from './Hero.module.css';
 export function Hero() {
   return (
     <section className={styles.section}>
-      <div className={styles.orbContainer}>
-        <div className={styles.orbPrimary} />
-        <div className={styles.orbAccent} />
-      </div>
       
       <div className={styles.content}>
         
@@ -33,3 +29,10 @@ export function Hero() {
     </section>
   );
 }
+
+/*
+<div className={styles.orbContainer}>
+        <div className={styles.orbPrimary} />
+        <div className={styles.orbAccent} />
+      </div>
+*/

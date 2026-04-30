@@ -4,7 +4,9 @@
 }
 
 @media (min-width: 640px) {
-  .section { padding: 6rem 0; }
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 .container {
@@ -14,7 +16,9 @@
 }
 
 @media (min-width: 640px) {
-  .container { padding: 0 2rem; }
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 /* Section Header */
@@ -39,8 +43,17 @@
   margin-bottom: 1rem;
 }
 
-@media (min-width: 640px) { .title { font-size: 2.25rem; } }
-@media (min-width: 768px) { .title { font-size: 3rem; } }
+@media (min-width: 640px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
 
 .description {
   font-size: 1.125rem;
@@ -129,6 +142,7 @@
 .cardWrapper {
   flex: 0 0 100%;
   scroll-snap-align: center;
+  padding: 1rem 0;
 }
 
 /* ─── Card ─── */
@@ -145,7 +159,9 @@
 }
 
 @media (min-width: 1024px) {
-  .cardInner { flex-direction: row; }
+  .cardInner {
+    flex-direction: row;
+  }
 }
 
 /* ─── Pricing Side ─── */
@@ -156,10 +172,13 @@
   justify-content: center;
   border-bottom: 1px solid var(--border);
   background-color: color-mix(in srgb, var(--background), transparent 85%);
+  border-radius: 1.5rem 1.5rem 0rem 0rem;
 }
 
 @media (min-width: 640px) {
-  .pricingSide { padding: 3rem; }
+  .pricingSide {
+    padding: 3rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -268,8 +287,15 @@
 }
 
 @keyframes priceScale {
-  0% { transform: scale(0.95); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .priceValue {
@@ -282,7 +308,9 @@
 }
 
 @media (min-width: 640px) {
-  .priceValue { font-size: 5rem; }
+  .priceValue {
+    font-size: 5rem;
+  }
 }
 
 .pricePeriod {
@@ -332,14 +360,19 @@
 .featuresSide {
   padding: 2rem;
   background-color: color-mix(in srgb, var(--background), transparent 90%);
+  border-radius: 0rem 0rem 1.5rem 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .featuresSide { padding: 4rem; }
+  .featuresSide {
+    padding: 4rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  .featuresSide { width: 55%; }
+  .featuresSide {
+    width: 55%;
+  }
 }
 
 .featuresLabel {

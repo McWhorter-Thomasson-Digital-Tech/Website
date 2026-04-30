@@ -24,7 +24,7 @@ export function Header() {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = ''; // Remove inline style so CSS classes apply correctly
     }
   }, [isMenuOpen]);
 
