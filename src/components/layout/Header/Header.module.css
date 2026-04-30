@@ -153,13 +153,16 @@
 /* Mobile Menu Styles */
 .mobileMenu {
   position: fixed;
-  inset: 0;
   backdrop-filter: blur(24px);
   z-index: -1;
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   display: flex;
+  height: 85%;
+  width: 90%;
+  border-radius: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .mobileMenuVisible {
