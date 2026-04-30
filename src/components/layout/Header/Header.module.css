@@ -159,21 +159,19 @@
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
+  display: flex;
 }
 
 .mobileMenuVisible {
   opacity: 1;
   pointer-events: auto;
-  display: flex;
   background: color-mix(in srgb, var(--background), transparent 20%);
 }
 
 .mobileMenuHidden {
   opacity: 0;
   pointer-events: none;
-  display: none;
   background: transparent;
-
 }
 
 .mobileNav {
