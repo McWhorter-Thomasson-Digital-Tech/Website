@@ -153,6 +153,7 @@
 /* Mobile Menu Styles */
 .mobileMenu {
   position: fixed;
+  background: transparent;
   backdrop-filter: blur(24px);
   z-index: -1;
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -168,13 +169,11 @@
 .mobileMenuVisible {
   opacity: 1;
   pointer-events: auto;
-  background: color-mix(in srgb, var(--background), transparent 20%);
 }
 
 .mobileMenuHidden {
   opacity: 0;
   pointer-events: none;
-  background: transparent;
 }
 
 .mobileNav {
