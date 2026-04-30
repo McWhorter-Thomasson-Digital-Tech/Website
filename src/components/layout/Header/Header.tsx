@@ -76,7 +76,7 @@ export function Header() {
 
 
       {/* Mobile Menu Overlay */}
-      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuVisible : ''}`}>
+      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuVisible : styles.mobileMenuHidden}`}>
         <nav className={styles.mobileNav}>
           {navLinks.map((link, index) => (
             <Link

@@ -225,7 +225,7 @@ button {
 
 .dark {
   color-scheme: dark;
-  --background: #020617;
+  --background: #111529;
   /* Synchronized with slate-950 for seamless Safari margins */
   --foreground: #F1F5F9;
   --card: #131B2E;
