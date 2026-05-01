@@ -61,10 +61,17 @@ export function BubbleCursor() {
     resize();
     window.addEventListener('resize', resize);
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       spawnBubbles(e.clientX, e.clientY);
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches[0]) {
+        spawnBubbles(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchstart', onTouchMove);
+    window.addEventListener('touchmove', onTouchMove);
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -130,7 +137,9 @@ export function BubbleCursor() {
 
     return () => {
       window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchMove);
+      window.removeEventListener('touchmove', onTouchMove);
       cancelAnimationFrame(animationRef.current);
     };
   }, [spawnBubbles]);

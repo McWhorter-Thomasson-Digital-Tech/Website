@@ -47,14 +47,43 @@ export function SnakeCursor() {
       }
     }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
+    const handleInteraction = (x: number, y: number) => {
+      mouseRef.current.x = x;
+      mouseRef.current.y = y;
     };
-    window.addEventListener('mousemove', handleMouseMove);
+
+    const onMouseMove = (e: MouseEvent) => handleInteraction(e.clientX, e.clientY);
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches[0]) {
+        handleInteraction(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchstart', onTouchMove);
+    window.addEventListener('touchmove', onTouchMove);
+
+    let lastMoveTime = Date.now();
+    let currentAlpha = 0;
+
+    const onMoveUpdate = () => {
+      lastMoveTime = Date.now();
+    };
+    window.addEventListener('mousemove', onMoveUpdate);
+    window.addEventListener('touchstart', onMoveUpdate);
+    window.addEventListener('touchmove', onMoveUpdate);
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Handle opacity based on inactivity
+      const now = Date.now();
+      const idleTime = now - lastMoveTime;
+      if (idleTime < 1000) {
+        currentAlpha = Math.min(1, currentAlpha + 0.05);
+      } else if (idleTime > 2000) {
+        currentAlpha = Math.max(0, currentAlpha - 0.02);
+      }
 
       const balls = ballsRef.current;
       frameRef.current++;
@@ -75,7 +104,9 @@ export function SnakeCursor() {
         const b = balls[i];
         const t = i / (balls.length - 1); // 0 = head, 1 = tail
         const radius = BASE_RADIUS * (1 - t * 0.6);
-        const opacity = 0.85 - t * 0.55;
+        const opacity = (0.85 - t * 0.55) * currentAlpha;
+
+        if (opacity <= 0.001) continue;
 
         // Each ball picks directly from the brand palette — no interpolation
         const colorIdx = (i + colorOffsetRef.current) % BRAND_COLORS.length;
@@ -130,7 +161,12 @@ export function SnakeCursor() {
 
     return () => {
       window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchMove);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('mousemove', onMoveUpdate);
+      window.removeEventListener('touchstart', onMoveUpdate);
+      window.removeEventListener('touchmove', onMoveUpdate);
       cancelAnimationFrame(animationRef.current);
     };
   }, []);
