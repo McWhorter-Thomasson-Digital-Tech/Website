@@ -6,6 +6,7 @@ import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { GlobalCursor } from "@/components/ui/GlobalCursor";
 import { CursorProvider } from "@/lib/CursorContext";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -63,6 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" className={cn("dark font-sans", geist.variable)}>
       <head>
+        <GoogleAnalytics gaId="AW-18045929417" />
         <JsonLd />
         <FaqSchema />
       </head>

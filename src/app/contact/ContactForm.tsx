@@ -4,6 +4,7 @@ import { useState } from "react";
 import { sendContactFormEmail } from "@/actions/sendEmail";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import styles from "./page.module.css";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export function ContactForm() {
   const [isPending, setIsPending] = useState(false);
@@ -27,6 +28,9 @@ export function ContactForm() {
       const response = await sendContactFormEmail({ name, email, message });
 
       if (response.success) {
+        sendGAEvent('event', 'conversion', {
+          'send_to': 'AW-18045929417/1NfrCNfA-6QcEMmP_JxD',
+        });
         setFormStatus({
           type: "success",
           message: "Message sent! We'll get back to you soon.",
