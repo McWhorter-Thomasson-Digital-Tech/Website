@@ -4,6 +4,7 @@ import { useState } from "react";
 import { sendContactFormEmail } from "@/actions/sendEmail";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import styles from "./page.module.css";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export function ContactForm() {
   const [isPending, setIsPending] = useState(false);
@@ -116,6 +117,7 @@ export function ContactForm() {
           type="submit"
           className={styles.submitButton}
           disabled={isPending}
+          onClick={() => sendGTMEvent({ event: 'contact form submitted', value: 'contact_form_submitted' })}
         >
           {isPending ? "Sending..." : "Send message"}
         </button>
