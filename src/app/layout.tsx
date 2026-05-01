@@ -64,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" className={cn("dark font-sans", geist.variable)}>
       <head>
-        <GoogleTagManager gtmId="AW-18045929417" />
+        <GoogleAnalytics gaId="AW-18045929417" />
         <JsonLd />
         <FaqSchema />
       </head>
