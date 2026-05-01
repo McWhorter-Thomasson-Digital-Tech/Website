@@ -14,7 +14,7 @@ export default async function Image() {
   // Load the logo from the public directory
   const logoData = await fetch(
     new URL('../../public/Logo_Clear_Center.png', import.meta.url)
-  ).then((res) => res.arrayBuffer())
+  ).then((res) => res.blob())
 
   return new ImageResponse(
     (
