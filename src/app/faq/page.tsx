@@ -67,7 +67,7 @@ export default function FAQPage() {
             Insights into our architectural standards, intellectual property, and strategic partnership model.
           </p>
         </div>
-        
+
         {/* Client Component handling state and glass UI rendering */}
         <FaqClient faqs={faqData} />
       </main>

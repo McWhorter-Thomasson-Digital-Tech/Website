@@ -20,14 +20,14 @@ export default function AboutPage() {
               Meet the team building your digital future.
             </p>
           </div>
-          
+
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Our mission</h2>
             <p className={styles.cardText}>
               We build digital systems that help you move faster. We focus on business websites, SEO, and custom SaaS platforms.
             </p>
           </div>
-          
+
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>The architects</h2>
             <p className={styles.cardText}>

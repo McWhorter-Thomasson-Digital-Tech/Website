@@ -22,7 +22,7 @@ export const TechnicalDeepDive = () => {
               Leveraging Next.js App Router and React Server Components (RSC) to ship zero-client-side JavaScript where possible, resulting in instant page loads and maximum SEO indexability.
             </p>
           </div>
-          
+
           <div className={styles.card}>
             <div className={`${styles.cardNumber} ${styles.numberBackend}`}>02. Backend</div>
             <h3 className={styles.cardTitle}>Serverless edge</h3>

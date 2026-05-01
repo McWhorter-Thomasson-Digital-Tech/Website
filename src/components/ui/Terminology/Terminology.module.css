@@ -30,12 +30,26 @@
 
 .tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%);
   width: 250px;
-  z-index: 1000;
+  z-index: 10000;
   animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portalTooltip {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+}
+
+.mobileTooltip {
+  position: fixed;
+  bottom: 2rem;
+  left: 1rem;
+  right: 1rem;
+  width: auto;
+  transform: none;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10000;
 }
 
 .tooltipInner {
@@ -92,24 +106,15 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(calc(-100% + 10px));
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(-100%);
   }
 }
 
-@media (max-width: 767px) {
-  .tooltip {
-    position: fixed;
-    bottom: 2rem;
-    left: 1rem;
-    right: 1rem;
-    width: auto;
-    transform: none;
-    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Mobile classes handled above via .mobileTooltip */
   
   .tooltipInner {
     padding: 1.5rem;
@@ -119,7 +124,7 @@
   .arrow {
     display: none;
   }
-}
+
 
 @keyframes slideUp {
   from {

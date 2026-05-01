@@ -24,13 +24,13 @@ export function FaqClient({ faqs }: FaqClientProps) {
     <div className={styles.faqSection}>
       {faqs.map((faq, idx) => {
         const isOpen = openIndex === idx;
-        
+
         return (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             className={`${styles.faqItem} ${isOpen ? styles.open : ''}`}
           >
-            <button 
+            <button
               className={styles.faqQuestion}
               onClick={() => toggleAccordion(idx)}
               aria-expanded={isOpen}

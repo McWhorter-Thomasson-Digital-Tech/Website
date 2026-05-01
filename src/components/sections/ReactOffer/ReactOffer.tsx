@@ -124,7 +124,7 @@ export function ReactOffer() {
   return (
     <section id="react-websites" className={styles.section}>
       <div className={styles.container}>
-        
+
         <div className={styles.sectionHeader}>
           <p className={styles.label}>Frontend & backend engineering</p>
           <h2 className={styles.title}>Our core products</h2>
@@ -137,22 +137,22 @@ export function ReactOffer() {
         <div className={styles.scrollContainer} ref={scrollRef}>
           {packages.map((pkg) => {
             const currentPricing = pkg.pricing[billingCycle];
-            
+
             return (
               <div key={pkg.id} className={styles.cardWrapper}>
                 <div className={styles.cardInner}>
-                  
+
                   <div className={styles.pricingSide}>
                     <p className={styles.tierLabel}>{pkg.name}</p>
 
                     {/* Billing Cycle Toggle — inside the card */}
                     <div className={styles.billingToggleWrapper}>
-                      <div 
-                        className={styles.billingToggleSlider} 
-                        style={{ 
+                      <div
+                        className={styles.billingToggleSlider}
+                        style={{
                           transform: `translateX(${getBillingTranslateX()})`,
                           width: `${100 / billingCycleOrder.length}%`
-                        }} 
+                        }}
                       />
                       {billingCycleOrder.map((cycle) => (
                         <button
@@ -164,7 +164,7 @@ export function ReactOffer() {
                         </button>
                       ))}
                     </div>
-                    
+
                     <div className={styles.priceContainer}>
                       {currentPricing.savings && currentPricing.savings !== 'none' && (
                         <span className={styles.saveBadge}>{currentPricing.savings}</span>
@@ -181,12 +181,12 @@ export function ReactOffer() {
                     </div>
 
                     <p className={styles.priceDesc}>{pkg.description}</p>
-                    
+
                     <Link href="/contact" className={styles.ctaButton}>
                       Deploy now
                     </Link>
                   </div>
-                  
+
                   <div className={styles.featuresSide}>
                     <p className={styles.featuresLabel}>What&apos;s included</p>
                     <ul className={styles.featuresList}>
@@ -208,18 +208,18 @@ export function ReactOffer() {
 
         {/* Swipe Controls / Indicators */}
         <div className={styles.swipeControls}>
-          <button 
-            className={styles.swipeArrow} 
+          <button
+            className={styles.swipeArrow}
             onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
             disabled={activeIndex === 0}
           >
             <ChevronLeft size={20} />
           </button>
-          
+
           <div className={styles.dots}>
             {packages.map((_, i) => (
-              <button 
-                key={i} 
+              <button
+                key={i}
                 className={`${styles.dot} ${activeIndex === i ? styles.activeDot : ''}`}
                 onClick={() => scrollTo(i)}
                 aria-label={`Go to package ${i + 1}`}
@@ -227,8 +227,8 @@ export function ReactOffer() {
             ))}
           </div>
 
-          <button 
-            className={styles.swipeArrow} 
+          <button
+            className={styles.swipeArrow}
             onClick={() => scrollTo(Math.min(packages.length - 1, activeIndex + 1))}
             disabled={activeIndex === packages.length - 1}
           >
