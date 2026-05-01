@@ -79,7 +79,7 @@
 @property --blob-3-x {
   syntax: '<percentage>';
   inherits: false;
-  initial-value: 20%;
+  initial-value: 0%;
 }
 
 @property --blob-3-y {
@@ -97,7 +97,7 @@
 @property --blob-4-y {
   syntax: '<percentage>';
   inherits: false;
-  initial-value: 80%;
+  initial-value: 90%;
 }
 
 html {
@@ -111,10 +111,10 @@ html {
   --blob-1-y: 0%;
   --blob-2-x: 100%;
   --blob-2-y: 30%;
-  --blob-3-x: 20%;
+  --blob-3-x: 0%;
   --blob-3-y: 50%;
   --blob-4-x: 20%;
-  --blob-4-y: 80%;
+  --blob-4-y: 90%;
   background-image:
     radial-gradient(circle at var(--blob-1-x) var(--blob-1-y), color-mix(in srgb, #111529, transparent 75%), transparent 40%),
     radial-gradient(circle at var(--blob-2-x) var(--blob-2-y), color-mix(in srgb, #9333ea, transparent 80%), transparent 40%),
@@ -129,21 +129,21 @@ html {
     --blob-1-x: 0%;
     --blob-1-y: 0%;
     --blob-2-x: 100%;
-    --blob-2-y: 30%;
-    --blob-3-x: 20%;
-    --blob-3-y: 50%;
+    --blob-2-y: 40%;
+    --blob-3-x: 0%;
+    --blob-3-y: 60%;
     --blob-4-x: 20%;
-    --blob-4-y: 80%;
+    --blob-4-y: 90%;
   }
 
   100% {
-    --blob-1-x: 10%;
-    --blob-1-y: 10%;
-    --blob-2-x: 90%;
-    --blob-2-y: 40%;
-    --blob-3-x: 30%;
-    --blob-3-y: 60%;
-    --blob-4-x: 30%;
+    --blob-1-x: 80%;
+    --blob-1-y: 0%;
+    --blob-2-x: 50%;
+    --blob-2-y: 30%;
+    --blob-3-x: 50%;
+    --blob-3-y: 70%;
+    --blob-4-x: 60%;
     --blob-4-y: 90%;
   }
 }

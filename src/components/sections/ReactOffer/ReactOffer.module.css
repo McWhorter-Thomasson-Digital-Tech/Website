@@ -142,7 +142,7 @@
 .cardWrapper {
   flex: 0 0 100%;
   scroll-snap-align: center;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 /* ─── Card ─── */
