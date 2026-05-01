@@ -13,7 +13,7 @@ export const contentType = 'image/png'
 export default async function Image() {
   // Load the logo from the public directory
   const logoData = await fetch(
-    new URL('../../public/Logo_Clear_Center.png', import.meta.url)
+    new URL('../../public/Logo_Clear_Center_smaller.png', import.meta.url)
   ).then((res) => res.blob())
 
   return new ImageResponse(
@@ -67,8 +67,8 @@ export default async function Image() {
           {/* @ts-ignore */}
           <img
             src={logoData}
-            width={480}
-            height={154}
+            width={320}
+            height={320}
             style={{
               objectFit: 'contain',
             }}
