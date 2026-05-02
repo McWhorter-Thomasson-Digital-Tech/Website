@@ -20,14 +20,6 @@ export default function PricingPage() {
     <>
       <Header />
       <main className={styles.main}>
-        <section className={styles.heroSection}>
-          <p className={styles.label}>Pricing</p>
-          <h1 className={styles.heading}>Transparent pricing</h1>
-          <p className={styles.subtitle}>
-            Choose the right plan for your team.
-          </p>
-        </section>
-
         <ReactOffer />
         
         <section className={styles.specsSection}>
