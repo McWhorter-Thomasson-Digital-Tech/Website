@@ -1,6 +1,6 @@
 /* Base Layout */
 .pageContainer {
-  background-color: transparent;
+  background-color: rgb(var(--background));
   color: rgb(var(--color-text));
   min-height: 100vh;
   /* Removed the hardcoded font-family here so it inherits Inter from globals.css */
