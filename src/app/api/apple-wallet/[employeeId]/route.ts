@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { mockBusinessCards } from '@/data/mockBusinessCards';
 import { PKPass } from 'passkit-generator';
+import fs from 'fs';
+import path from 'path';
 
 export async function GET(
   request: Request,
@@ -103,9 +105,16 @@ export async function GET(
       signerKey: Buffer.from(APPLE_SIGNER_KEY, 'base64')
     });
 
-    // In a production app, we would add the logo.png and icon.png buffers to the pass here
-    // pass.addBuffer('logo.png', Buffer.from(...));
-    // pass.addBuffer('icon.png', Buffer.from(...));
+    try {
+      const iconPath = path.join(process.cwd(), 'public', 'Logo.png');
+      const iconBuffer = fs.readFileSync(iconPath);
+      pass.addBuffer('icon.png', iconBuffer);
+      pass.addBuffer('icon@2x.png', iconBuffer);
+      pass.addBuffer('logo.png', iconBuffer);
+      pass.addBuffer('logo@2x.png', iconBuffer);
+    } catch (err) {
+      console.warn('Could not add image buffers to pass:', err);
+    }
 
     const buffer = pass.getAsBuffer();
 
