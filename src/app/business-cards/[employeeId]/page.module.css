@@ -22,7 +22,6 @@
   left: 0;
   right: 0;
   height: 16rem;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--primary) 10%, transparent), transparent);
   pointer-events: none;
   z-index: -10;
 }
