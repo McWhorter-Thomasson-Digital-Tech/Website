@@ -19,14 +19,14 @@ interface PackageConfig {
 const packages: PackageConfig[] = [
   {
     id: 'website',
-    name: 'Business websites & SEO',
+    name: 'Business Websites & SEO',
     shortName: 'Marketing',
-    description: 'High-performance sites architected for visibility and designed to grow your business.',
+    description: 'High-performance sites designed for visibility and business growth.',
     features: [
-      'Premium Digital Architecture',
-      'Strategic Search Optimization (SEO)',
-      'Next-Gen Search Visibility (GEO)',
-      'Essential Form & API Solutions',
+      'Premium Design, Lightning-Fast Performance',
+      'Strategic Search Optimization (SEO) & AI-Powered GEO for Next-Gen Visibility',
+      '99.99% Uptime',
+      'Custom Form & API Solutions',
     ],
     pricing: {
       annually: { price: '300', detail: 'Billed annually', savings: 'Save 25% annually' },
