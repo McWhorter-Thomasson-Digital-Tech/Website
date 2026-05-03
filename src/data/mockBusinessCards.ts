@@ -14,7 +14,7 @@ export const mockBusinessCards: Record<string, WalletPassData> = {
     companyWebsite: 'https://mtdigitaltech.com',
     passBackgroundColor: '#0f172a',
     passTextColor: '#ffffff',
-    logoImageUrl: '/Logo_Clear_Center_smaller.png',
+    logoImageUrl: '/Logo.png',
   },
   'graham-thomasson': {
     id: 'graham-thomasson',
@@ -29,7 +29,7 @@ export const mockBusinessCards: Record<string, WalletPassData> = {
     companyWebsite: 'https://mtdigitaltech.com',
     passBackgroundColor: '#0f172a',
     passTextColor: '#ffffff',
-    logoImageUrl: '/Logo_Clear_Center_smaller.png',
+    logoImageUrl: '/Logo.png',
   }
 };
 
