@@ -226,3 +226,164 @@
   text-wrap: balance;
   text-align: center;
 }
+
+/* ─── Business Cards Demo Section ─── */
+.demoSection {
+  padding: 4rem 1.5rem;
+  margin: 0 auto;
+  max-width: 72rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  border-top: 1px solid color-mix(in srgb, var(--border), transparent 80%);
+}
+
+.demoSectionHeader {
+  text-align: center;
+  max-width: 48rem;
+}
+
+.sectionHeading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(160deg, #f1f5f9 20%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .sectionHeading {
+    font-size: 2.5rem;
+  }
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+.demoSectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .demoSectionContent {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+  }
+}
+
+.controlPanel {
+  flex: 1;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.qrDisplayWrapper {
+  display: flex;
+  justify-content: center;
+  background: color-mix(in srgb, var(--card), transparent 60%);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 90%);
+}
+
+/* Phone Mockup */
+.phoneMockupContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.mockPhone {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 650px;
+  background: #000;
+  border-radius: 40px;
+  box-shadow: 
+    0 0 0 10px #1a1a1a,
+    0 0 0 11px color-mix(in srgb, var(--border), transparent 50%),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #1a1a1a;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 50;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hide scrollbar for the phone screen */
+.phoneScreen::-webkit-scrollbar {
+  display: none;
+}
+.phoneScreen {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reused card styles adapted for the phone screen */
+.cardContainer {
+  padding: 2.5rem 0.5rem 2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.cardInner {
+  margin-top: 1rem;
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: color-mix(in srgb, var(--border) 40%, transparent);
+  margin: 1.5rem auto;
+}
+
+.phoneFooter {
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footerText {
+  font-size: 0.65rem;
+  line-height: 1rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}

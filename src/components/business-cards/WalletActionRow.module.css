@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 24rem;
+  margin: 1.5rem auto 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.walletBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.walletBtn:active {
+  transform: scale(0.95);
+}
+
+.appleBtn {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.appleBtn:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+.googleBtn {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+
+.googleBtn:hover {
+  background-color: #1557b0;
+  transform: translateY(-1px);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

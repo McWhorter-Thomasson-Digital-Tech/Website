@@ -27,15 +27,15 @@ export function DemoClient() {
   const selected = EFFECTS.find((e) => e.id === cursorType)!;
 
   return (
-    <>
-      <section className={styles.heroSection}>
-        <span className={styles.label}>Interactive Demo</span>
-        <h1 className={styles.heading}>Custom Cursor Effects</h1>
-        <p className={styles.subtitle}>
+    <section className={styles.demoSection}>
+      <div className={styles.demoSectionHeader}>
+        <span className={styles.label}>Frontend Polish</span>
+        <h2 className={styles.sectionHeading}>Custom Cursor Effects</h2>
+        <p className={styles.sectionSubtitle}>
           We design and build bespoke cursor effects tailored to your brand.
           Move your cursor around to experience each style in real time — then imagine what we can craft for you.
         </p>
-        <div className={styles.desktopNote}>
+        <div className={styles.desktopNote} style={{ margin: '2rem auto 0' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
             <line x1="8" y1="21" x2="16" y2="21" />
@@ -43,7 +43,7 @@ export function DemoClient() {
           </svg>
           <span>Best experienced on Desktop. Mobile browsers are optimized for immersive browsing without these effects.</span>
         </div>
-      </section>
+      </div>
 
       <section className={styles.controlSection}>
         <div className={styles.controlCard}>
@@ -73,6 +73,6 @@ export function DemoClient() {
           <p className={styles.promptText}>Move your cursor anywhere</p>
         </div>
       </section>
-    </>
+    </section>
   );
 }

@@ -3,6 +3,7 @@ import { mockBusinessCards } from '@/data/mockBusinessCards';
 import ProfileHeader from '@/components/business-cards/ProfileHeader';
 import ActionRow from '@/components/business-cards/ActionRow';
 import SaveButton from '@/components/business-cards/SaveButton';
+import WalletActionRow from '@/components/business-cards/WalletActionRow';
 import QRCodeDisplay from '@/components/business-cards/QRCodeDisplay';
 import styles from './page.module.css';
 
@@ -42,10 +43,12 @@ export default async function BusinessCardPage({
           <div className={styles.divider} />
           
           <SaveButton employeeId={employeeId} />
+          <WalletActionRow employeeId={employeeId} />
         </div>
       </div>
 
       <QRCodeDisplay url={profileUrl} />
+
       
       <footer className={styles.footer}>
         <p className={styles.footerText}>
