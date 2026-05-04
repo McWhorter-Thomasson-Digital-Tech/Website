@@ -1,8 +1,8 @@
 import { WalletPassData } from '../types/businessCard';
 
 export const mockBusinessCards: Record<string, WalletPassData> = {
-  'matthew-mcwhorter': {
-    id: 'matthewt',
+  'matthew': {
+    id: 'matthew-mcwhorter',
     firstName: 'Matthew',
     lastName: 'McWhorter',
     title: 'Co-Founder',
@@ -16,8 +16,8 @@ export const mockBusinessCards: Record<string, WalletPassData> = {
     passTextColor: '#ffffff',
     logoImageUrl: '/Logo.png',
   },
-  'graham-thomasson': {
-    id: 'grahamt',
+  'graham': {
+    id: 'graham-thomasson',
     firstName: 'Graham',
     lastName: 'Thomasson',
     title: 'Co-Founder',
