@@ -41,7 +41,7 @@ export async function GET(
       hexBackgroundColor: employeeData.passBackgroundColor || '#0f172a',
       logo: {
         sourceUri: {
-          uri: `https://mtdigitaltech.com${employeeData.logoImageUrl}`
+          uri: `https://mtdigitaltech.com${employeeData.logoImageUrl}?t=${Date.now()}`
         }
       },
       cardTitle: {
