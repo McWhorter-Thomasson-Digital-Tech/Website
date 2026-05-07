@@ -1,20 +1,41 @@
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 import { mockBusinessCards } from '@/data/mockBusinessCards';
 import { PKPass } from 'passkit-generator';
 import fs from 'fs';
 import path from 'path';
-import { supabase } from '@/lib/supabase';
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ employeeId: string }> }
+  { params }: { params: Promise<{ passTypeIdentifier: string, serialNumber: string }> }
 ) {
   try {
-    const { employeeId } = await params;
+    const { serialNumber } = await params;
+    
+    const authHeader = request.headers.get('Authorization');
+    if (!authHeader || !authHeader.startsWith('ApplePass ')) {
+      return new NextResponse('Unauthorized', { status: 401 });
+    }
+    const token = authHeader.replace('ApplePass ', '').trim();
+    
+    const { data: passData, error: dbError } = await supabase
+      .from('wallet_passes')
+      .select('authentication_token')
+      .eq('serial_number', serialNumber)
+      .single();
+
+    if (dbError || !passData || passData.authentication_token !== token) {
+      return new NextResponse('Unauthorized', { status: 401 });
+    }
+
+    // Extract employeeId from serialNumber (format: card-{employeeId})
+    const employeeId = serialNumber.replace('card-', '');
     const employeeData = mockBusinessCards[employeeId];
 
     if (!employeeData) {
-      return new NextResponse('Employee not found', { status: 404 });
+      return new NextResponse('Pass Not Found', { status: 404 });
     }
 
     // Verify required environment variables
@@ -26,28 +47,21 @@ export async function GET(
       APPLE_PASS_TYPE_IDENTIFIER,
     } = process.env;
 
-    // app/api/apple-wallet/[employeeId]/route.ts
-
-    // The regex /\\n/g finds the literal string "\n" and replaces it with an actual newline character
-
     if (!APPLE_WWDR_CERT || !APPLE_SIGNER_CERT || !APPLE_SIGNER_KEY) {
-      // Return a 500 but log detailed error for the developer
       console.error('Missing Apple Wallet Certificates in environment variables.');
-      return new NextResponse('Apple Wallet integration is not fully configured.', { status: 500 });
+      return new NextResponse('Internal Server Error', { status: 500 });
     }
 
-    // Generate a secure auth token
-    const authenticationToken = crypto.randomUUID().replace(/-/g, '');
     const webServiceURL = `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com'}/api/apple-wallet/`;
 
     // Build the pass.json payload
     const passJson = {
       formatVersion: 1,
       passTypeIdentifier: APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard',
-      serialNumber: `card-${employeeId}`,
+      serialNumber: serialNumber,
       teamIdentifier: APPLE_PASS_TEAM_IDENTIFIER || 'TEAMID1234',
       webServiceURL,
-      authenticationToken,
+      authenticationToken: token,
       organizationName: employeeData.companyName,
       description: `${employeeData.firstName} ${employeeData.lastName} - Digital Business Card`,
       backgroundColor: employeeData.passBackgroundColor || '#0f172a',
@@ -130,30 +144,16 @@ export async function GET(
 
     const buffer = pass.getAsBuffer();
 
-    // Store the pass details in Supabase
-    try {
-      await supabase
-        .from('wallet_passes')
-        .upsert({
-          serial_number: `card-${employeeId}`,
-          authentication_token: authenticationToken,
-          updated_at: new Date().toISOString()
-        });
-    } catch (dbError) {
-      console.error('Failed to store wallet pass in Supabase:', dbError);
-      // We continue since the pass itself was generated successfully
-    }
-
     return new NextResponse(new Uint8Array(buffer), {
       headers: {
         'Content-Type': 'application/vnd.apple.pkpass',
-        'Content-Disposition': `attachment; filename="wallet-${employeeId}.pkpass"`,
+        'Content-Disposition': `attachment; filename="${serialNumber}.pkpass"`,
       },
+      status: 200,
     });
 
   } catch (error) {
-    console.error('Error generating Apple Wallet Pass:', error);
+    console.error('Error generating latest pass:', error);
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 }
-

@@ -11,9 +11,12 @@
   "dependencies": {
     "@base-ui/react": "^1.4.0",
     "@next/third-parties": "^16.2.4",
+    "@supabase/supabase-js": "^2.105.3",
+    "@types/apn": "^0.0.31",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
     "@vercel/speed-insights": "^1.0.4",
+    "apn": "^2.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "google-auth-library": "^10.6.2",

@@ -29,7 +29,6 @@
 .cardContainer {
   width: 100%;
   max-width: 28rem;
-  background-color: var(--card);
   border-radius: 1.5rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
