@@ -13,25 +13,25 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 export const metadata: Metadata = {
   metadataBase: new URL("https://mtdigitaltech.com"),
   title: {
-    template: "%s | MTDT Agency",
-    default: "MTDT Agency | High-End Websites & SaaS for Modern Business",
+    template: "%s | MTDT",
+    default: "MTDT | Website Development & Design | E-commerce & Software Solutions",
   },
-  description: "MTDT Agency architectures high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for modern search visibility and conversion.",
-  keywords: ["Premium Business Websites", "SaaS Engineering", "E-commerce Development", "Modern Search Visibility", "AEO", "GEO", "MTDT Agency", "Matthew McWhorter", "Graham Thomasson"],
+  description: "MTDT architectures high-performance business websites, e-commerce storefronts, and custom software platforms optimized for modern search visibility and conversion.",
+  keywords: ["Premium Websites", "Web Design", "Web Development", "Software Solutions", "Software Engineering", "E-commerce Development", "Modern Search Visibility", "AEO", "GEO", "MTDT", "Matthew McWhorter", "Graham Thomasson"],
   authors: [{ name: "Matthew McWhorter" }, { name: "Graham Thomasson" }],
   openGraph: {
-    title: "MTDT Agency | High-End Websites & SaaS for Modern Business",
-    description: "High-performance digital platforms architected for visibility, speed, and conversion.",
+    title: "MTDT | Website Development & Design | E-commerce & Software Solutions",
+    description: "High-performance premium websites, e-commerce storefronts, and custom software platforms architected for visibility, speed, and conversion.",
     url: "https://mtdigitaltech.com",
-    siteName: "McWhorter-Thomasson Digital Technologies",
+    siteName: "McWhorter- Thomasson Digital Technologies",
 
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MTDT Agency | Websites & SaaS for Modern Business",
-    description: "High-performance business websites, e-commerce storefronts, and custom SaaS platforms.",
+    title: "MTDT | Website Development & Design | E-commerce & Software Solutions",
+    description: "High-performance premium websites, e-commerce storefronts, and custom software platforms.",
   },
   alternates: {
     canonical: "https://mtdigitaltech.com",

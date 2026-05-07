@@ -25,9 +25,9 @@ export default async function BusinessCardPage({
     notFound();
   }
 
-  // Get the base URL from the environment or default to localhost in dev
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const profileUrl = `${baseUrl}/business-cards/${employeeId}`;
+  // Get the base URL from the environment or default to localhost in de
+  const baseDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN || 'mtdigitaltech.com';
+  const profileUrl = `https://${employeeId}.${baseDomain}`;
 
   return (
     <main className={styles.main}>

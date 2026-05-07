@@ -18,12 +18,12 @@ export default function JsonLd() {
         "name": "Graham Thomasson"
       }
     ],
-    "description": "MTDT Agency builds high-performance business websites, e-commerce storefronts, and custom SaaS platforms optimized for AI search and conversion.",
+    "description": "MTDT Agency builds high-performance business websites, e-commerce storefronts, and custom software platforms optimized for AI search and conversion.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-704-254-0084",
       "contactType": "customer service",
-      "email": "matt@mtdigitaltech.com"
+      "email": "contact@mtdigitaltech.com"
     },
     "address": {
       "@type": "PostalAddress",

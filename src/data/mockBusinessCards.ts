@@ -9,7 +9,7 @@ export const mockBusinessCards: Record<string, WalletPassData> = {
     email: 'matt@mtdigitaltech.com',
     phoneMobile: '+17042540084',
     linkedInUrl: 'https://www.linkedin.com/in/matthewmcw/',
-    profileImageUrl: '/Logo.png', // Fallback as no headshot provided
+    profileImageUrl: '/mm-headshott.png', // Fallback as no headshot provided
     companyName: 'McWhorter-Thomasson Digital Technologies',
     companyWebsite: 'https://mtdigitaltech.com',
     passBackgroundColor: '#0f172a',
