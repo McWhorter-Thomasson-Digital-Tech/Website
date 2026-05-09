@@ -9,72 +9,112 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
   console.log('[wallet-updates] Starting post-deploy wallet update...');
 
   // 1. Bump updated_at for ALL passes so devices know there's something new
-  const { data: passes, error: passError } = await supabase
-    .from('wallet_passes')
-    .select('serial_number');
+  let passes: { serial_number: string }[] = [];
+  try {
+    console.log('[wallet-updates] Step 1: Fetching passes from DB...');
+    const { data, error: passError } = await supabase
+      .from('wallet_passes')
+      .select('serial_number');
 
-  if (passError || !passes || passes.length === 0) {
-    console.log('[wallet-updates] No passes found in DB');
+    if (passError) {
+      console.error('[wallet-updates] Step 1 FAILED — DB error:', passError.message);
+      return { updated: 0, notified: 0 };
+    }
+
+    if (!data || data.length === 0) {
+      console.log('[wallet-updates] Step 1 — No passes found in DB');
+      return { updated: 0, notified: 0 };
+    }
+
+    passes = data;
+    console.log(`[wallet-updates] Step 1 OK — Found ${passes.length} pass(es)`);
+  } catch (err) {
+    console.error('[wallet-updates] Step 1 EXCEPTION:', err);
     return { updated: 0, notified: 0 };
   }
 
-  const now = new Date().toISOString();
-  const { error: updateError } = await supabase
-    .from('wallet_passes')
-    .update({ updated_at: now })
-    .in('serial_number', passes.map(p => p.serial_number));
+  try {
+    console.log('[wallet-updates] Step 2: Bumping timestamps...');
+    const now = new Date().toISOString();
+    const { error: updateError } = await supabase
+      .from('wallet_passes')
+      .update({ updated_at: now })
+      .in('serial_number', passes.map(p => p.serial_number));
 
-  if (updateError) {
-    console.error('[wallet-updates] Failed to update timestamps:', updateError);
+    if (updateError) {
+      console.error('[wallet-updates] Step 2 FAILED:', updateError.message);
+      return { updated: 0, notified: 0 };
+    }
+    console.log(`[wallet-updates] Step 2 OK — Updated ${passes.length} pass timestamps`);
+  } catch (err) {
+    console.error('[wallet-updates] Step 2 EXCEPTION:', err);
     return { updated: 0, notified: 0 };
   }
-
-  console.log(`[wallet-updates] Updated ${passes.length} pass timestamps`);
 
   // 2. Get all registered push tokens (deduplicated)
-  const { data: registrations, error: regError } = await supabase
-    .from('wallet_registrations')
-    .select('push_token');
+  let pushTokens: string[] = [];
+  try {
+    console.log('[wallet-updates] Step 3: Fetching registrations...');
+    const { data: registrations, error: regError } = await supabase
+      .from('wallet_registrations')
+      .select('push_token');
 
-  if (regError || !registrations || registrations.length === 0) {
-    console.log('[wallet-updates] No registered devices to notify');
+    if (regError) {
+      console.error('[wallet-updates] Step 3 FAILED:', regError.message);
+      return { updated: passes.length, notified: 0 };
+    }
+
+    if (!registrations || registrations.length === 0) {
+      console.log('[wallet-updates] Step 3 — No registered devices to notify');
+      return { updated: passes.length, notified: 0 };
+    }
+
+    pushTokens = [...new Set(registrations.map(r => r.push_token))];
+    console.log(`[wallet-updates] Step 3 OK — Found ${pushTokens.length} device(s)`);
+  } catch (err) {
+    console.error('[wallet-updates] Step 3 EXCEPTION:', err);
     return { updated: passes.length, notified: 0 };
   }
 
   // 3. Send APNs pushes
-  const {
-    APPLE_APNS_KEY,
-    APPLE_APNS_KEY_ID,
-    APPLE_PASS_TEAM_IDENTIFIER,
-    APPLE_PASS_TYPE_IDENTIFIER
-  } = process.env;
+  try {
+    console.log('[wallet-updates] Step 4: Sending APNs push...');
+    const {
+      APPLE_APNS_KEY,
+      APPLE_APNS_KEY_ID,
+      APPLE_PASS_TEAM_IDENTIFIER,
+      APPLE_PASS_TYPE_IDENTIFIER
+    } = process.env;
 
-  if (!APPLE_APNS_KEY || !APPLE_APNS_KEY_ID || !APPLE_PASS_TEAM_IDENTIFIER) {
-    console.warn('[wallet-updates] APNs credentials not configured, skipping push notifications');
+    if (!APPLE_APNS_KEY || !APPLE_APNS_KEY_ID || !APPLE_PASS_TEAM_IDENTIFIER) {
+      console.warn('[wallet-updates] Step 4 SKIPPED — APNs credentials not configured');
+      return { updated: passes.length, notified: 0 };
+    }
+
+    const apn = (await import('apn')).default;
+
+    const provider = new apn.Provider({
+      token: {
+        key: Buffer.from(APPLE_APNS_KEY, 'base64'),
+        keyId: APPLE_APNS_KEY_ID,
+        teamId: APPLE_PASS_TEAM_IDENTIFIER
+      },
+      production: true
+    });
+
+    const notification = new apn.Notification();
+    // Apple Wallet requires a completely empty payload for pass updates
+    notification.topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
+
+    const result = await provider.send(notification, pushTokens);
+    console.log(`[wallet-updates] Step 4 OK — APNs result:`, JSON.stringify(result));
+
+    provider.shutdown();
+
+    return { updated: passes.length, notified: pushTokens.length };
+  } catch (err) {
+    console.error('[wallet-updates] Step 4 EXCEPTION:', err);
     return { updated: passes.length, notified: 0 };
   }
-
-  const apn = (await import('apn')).default;
-
-  const provider = new apn.Provider({
-    token: {
-      key: Buffer.from(APPLE_APNS_KEY, 'base64'),
-      keyId: APPLE_APNS_KEY_ID,
-      teamId: APPLE_PASS_TEAM_IDENTIFIER
-    },
-    production: true
-  });
-
-  const notification = new apn.Notification();
-  // Apple Wallet requires a completely empty payload for pass updates
-  notification.topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
-
-  const pushTokens = [...new Set(registrations.map(r => r.push_token))];
-  const result = await provider.send(notification, pushTokens);
-
-  console.log(`[wallet-updates] APNs push sent to ${pushTokens.length} device(s):`, JSON.stringify(result));
-
-  provider.shutdown();
-
-  return { updated: passes.length, notified: pushTokens.length };
 }
+
