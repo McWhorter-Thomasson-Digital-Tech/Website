@@ -5,16 +5,27 @@ import { supabase } from '@/lib/supabase';
 
 async function validateToken(request: Request, serialNumber: string): Promise<boolean> {
   const authHeader = request.headers.get('Authorization');
+  console.log('[wallet-auth] serialNumber:', serialNumber);
+  console.log('[wallet-auth] authHeader present:', !!authHeader, 'starts with ApplePass:', authHeader?.startsWith('ApplePass '));
+
   if (!authHeader || !authHeader.startsWith('ApplePass ')) {
+    console.log('[wallet-auth] REJECTED: missing or malformed Authorization header');
     return false;
   }
   const token = authHeader.replace('ApplePass ', '').trim();
+  console.log('[wallet-auth] token from device (first 8 chars):', token.substring(0, 8));
   
   const { data, error } = await supabase
     .from('wallet_passes')
     .select('authentication_token')
     .eq('serial_number', serialNumber)
     .single();
+
+  console.log('[wallet-auth] DB lookup — error:', error?.message || 'none', '| data found:', !!data);
+  if (data) {
+    console.log('[wallet-auth] DB token (first 8 chars):', data.authentication_token?.substring(0, 8));
+    console.log('[wallet-auth] tokens match:', data.authentication_token === token);
+  }
 
   if (error || !data) return false;
   
