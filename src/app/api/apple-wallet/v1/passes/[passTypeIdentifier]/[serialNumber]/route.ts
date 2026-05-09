@@ -22,7 +22,7 @@ export async function GET(
     
     const { data: passData, error: dbError } = await supabase
       .from('wallet_passes')
-      .select('authentication_token')
+      .select('authentication_token, updated_at')
       .eq('serial_number', serialNumber)
       .single();
 
@@ -144,10 +144,15 @@ export async function GET(
 
     const buffer = pass.getAsBuffer();
 
+    const lastModified = passData.updated_at
+      ? new Date(passData.updated_at).toUTCString()
+      : new Date().toUTCString();
+
     return new NextResponse(new Uint8Array(buffer), {
       headers: {
         'Content-Type': 'application/vnd.apple.pkpass',
         'Content-Disposition': `attachment; filename="${serialNumber}.pkpass"`,
+        'Last-Modified': lastModified,
       },
       status: 200,
     });
