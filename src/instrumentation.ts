@@ -16,25 +16,25 @@ export async function register() {
   }
 
   try {
-    const redisUrl = process.env.UPSTASH_REDIS_REST_API_URL;
-    const redisToken = process.env.UPSTASH_REDIS_REST_API_TOKEN;
+    // Try Redis deduplication to ensure we only fire once per deployment.
+    // If Redis is unavailable, still run the update — it's idempotent.
+    const redisUrl = process.env.UPSTASH_REDIS_KV_REST_API_URL;
+    const redisToken = process.env.UPSTASH_REDIS_KV_REST_API_TOKEN;
 
-    if (!redisUrl || !redisToken) {
-      console.log('[deploy-hook] Redis not configured, skipping deploy hook');
-      return;
-    }
+    if (redisUrl && redisToken) {
+      const { Redis } = await import('@upstash/redis');
+      const redis = new Redis({ url: redisUrl, token: redisToken });
 
-    // Dynamic import to avoid bundling in Edge runtime
-    const { Redis } = await import('@upstash/redis');
-    const redis = new Redis({ url: redisUrl, token: redisToken });
+      // Atomic check-and-set: only the first cold-start for this deployment succeeds.
+      // Key expires after 24h to avoid Redis clutter.
+      const wasSet = await redis.set(`deploy-update:${deploymentId}`, '1', { nx: true, ex: 86400 });
 
-    // Atomic check-and-set: only the first cold-start for this deployment succeeds.
-    // Key expires after 24h to avoid Redis clutter.
-    const wasSet = await redis.set(`deploy-update:${deploymentId}`, '1', { nx: true, ex: 86400 });
-
-    if (!wasSet) {
-      // Another function instance already processed this deployment
-      return;
+      if (!wasSet) {
+        // Another function instance already processed this deployment
+        return;
+      }
+    } else {
+      console.log('[deploy-hook] Redis not available, running update without deduplication');
     }
 
     console.log('[deploy-hook] New deployment detected:', deploymentId);

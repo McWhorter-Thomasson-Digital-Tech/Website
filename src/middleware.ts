@@ -5,10 +5,10 @@ import { Redis } from '@upstash/redis';
 
 // Initialize Redis and Rate Limit
 // Check if UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are set to avoid errors during local dev if not configured yet
-const redis = (process.env.UPSTASH_REDIS_REST_API_URL && process.env.UPSTASH_REDIS_REST_API_TOKEN)
+const redis = (process.env.UPSTASH_REDIS_KV_REST_API_URL && process.env.UPSTASH_REDIS_KV_REST_API_TOKEN)
   ? new Redis({
-      url: process.env.UPSTASH_REDIS_REST_API_URL,
-      token: process.env.UPSTASH_REDIS_REST_API_TOKEN,
+      url: process.env.UPSTASH_REDIS_KV_REST_API_URL,
+      token: process.env.UPSTASH_REDIS_KV_REST_API_TOKEN,
     })
   : null;
 
