@@ -40,7 +40,7 @@ export async function GET(
     // Regenerating on every download would invalidate tokens already embedded in installed passes,
     // causing "Authentication failure" on register/unregister calls from the device.
     const serialNumber = `card-${employeeId}`;
-    const webServiceURL = `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com'}/api/apple-wallet/`;
+    const webServiceURL = `https://www.${(process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com').replace(/^www\./, '')}/api/apple-wallet/`;
 
     let authenticationToken: string;
     const { data: existingPass } = await supabase

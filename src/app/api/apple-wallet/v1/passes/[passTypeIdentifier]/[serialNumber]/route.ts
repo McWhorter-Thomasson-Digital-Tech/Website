@@ -52,7 +52,7 @@ export async function GET(
       return new NextResponse('Internal Server Error', { status: 500 });
     }
 
-    const webServiceURL = `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com'}/api/apple-wallet/`;
+    const webServiceURL = `https://www.${(process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com').replace(/^www\./, '')}/api/apple-wallet/`;
 
     // Build the pass.json payload
     const passJson = {
