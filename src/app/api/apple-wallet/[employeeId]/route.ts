@@ -36,15 +36,30 @@ export async function GET(
       return new NextResponse('Apple Wallet integration is not fully configured.', { status: 500 });
     }
 
-    // Generate a secure auth token
-    const authenticationToken = crypto.randomUUID().replace(/-/g, '');
+    // Reuse existing auth token if the pass already exists in DB, otherwise generate a new one.
+    // Regenerating on every download would invalidate tokens already embedded in installed passes,
+    // causing "Authentication failure" on register/unregister calls from the device.
+    const serialNumber = `card-${employeeId}`;
     const webServiceURL = `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com'}/api/apple-wallet/`;
+
+    let authenticationToken: string;
+    const { data: existingPass } = await supabase
+      .from('wallet_passes')
+      .select('authentication_token')
+      .eq('serial_number', serialNumber)
+      .single();
+
+    if (existingPass?.authentication_token) {
+      authenticationToken = existingPass.authentication_token;
+    } else {
+      authenticationToken = crypto.randomUUID().replace(/-/g, '');
+    }
 
     // Build the pass.json payload
     const passJson = {
       formatVersion: 1,
       passTypeIdentifier: APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard',
-      serialNumber: `card-${employeeId}`,
+      serialNumber,
       teamIdentifier: APPLE_PASS_TEAM_IDENTIFIER || 'TEAMID1234',
       webServiceURL,
       authenticationToken,
@@ -135,7 +150,7 @@ export async function GET(
       await supabase
         .from('wallet_passes')
         .upsert({
-          serial_number: `card-${employeeId}`,
+          serial_number: serialNumber,
           authentication_token: authenticationToken,
           updated_at: new Date().toISOString()
         });
