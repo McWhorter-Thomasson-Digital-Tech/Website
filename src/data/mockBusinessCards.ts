@@ -18,7 +18,7 @@ export const mockBusinessCards: Record<string, WalletPassData> = {
   },
   'graham': {
     id: 'graham-thomasson',
-    firstName: 'Graham',
+    firstName: '(Test) Graham',
     lastName: 'Thomasson',
     title: 'Co-Founder',
     email: 'graham@mtdigitaltech.com',
