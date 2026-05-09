@@ -8,13 +8,31 @@ import { supabase } from './supabase';
 export async function sendAllWalletUpdates(): Promise<{ updated: number; notified: number }> {
   console.log('[wallet-updates] Starting post-deploy wallet update...');
 
+  // 0. Quick connectivity test
+  try {
+    console.log('[wallet-updates] Step 0: Checking internet connectivity...');
+    const start = Date.now();
+    const probe = await fetch('https://www.google.com', { method: 'HEAD', signal: AbortSignal.timeout(3000) });
+    console.log(`[wallet-updates] Step 0 OK — Connectivity probe successful (${probe.status}) in ${Date.now() - start}ms`);
+  } catch (err) {
+    console.warn('[wallet-updates] Step 0 WARNING — Connectivity probe failed (non-fatal):', err);
+  }
+
   // 1. Bump updated_at for ALL passes so devices know there's something new
   let passes: { serial_number: string }[] = [];
   try {
     console.log('[wallet-updates] Step 1: Fetching passes from DB...');
-    const { data, error: passError } = await supabase
+    
+    // Race the supabase call against a timeout to prevent hanging the cold start
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Supabase fetch timed out after 8s')), 8000)
+    );
+
+    const fetchPromise = supabase
       .from('wallet_passes')
       .select('serial_number');
+
+    const { data, error: passError } = await Promise.race([fetchPromise, timeoutPromise]) as any;
 
     if (passError) {
       console.error('[wallet-updates] Step 1 FAILED — DB error:', passError.message);
