@@ -90,6 +90,7 @@ export default async function Image() {
             maxWidth: '1000px',
             lineHeight: 1.1,
             padding: '0 40px',
+            display: 'flex',
           }}
         >
           Engineering High-Velocity React Ecosystems &<br />
