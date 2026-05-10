@@ -23,8 +23,23 @@ export async function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'mtdigitaltech.com';
   const pathname = request.nextUrl.pathname;
+  const userAgent = request.headers.get('user-agent') || '';
 
-  // 1. Rate Limiting Logic
+  // 1. Bot Filtering Logic
+  // We block common scrapers and the specific outdated Chrome version found in your logs
+  const isSuspiciousBot = 
+    !userAgent || 
+    /ahrefs|semrush|dotbot|python|curl|axios|node-fetch|go-http-client/i.test(userAgent);
+    //|| /chrome\/[0-9]{1,2}\./i.test(userAgent); // Blocks Chrome versions < 100
+
+  if (isSuspiciousBot) {
+    // Always block suspicious bots on subdomains or API routes
+    if (hostname !== rootDomain || pathname.startsWith('/api')) {
+      return new NextResponse('Access Denied', { status: 403 });
+    }
+  }
+
+  // 2. Rate Limiting Logic
   // Apply rate limiting to all business card routes or api routes that handle sensitive PII
   if (pathname.startsWith('/api/apple-wallet') || pathname.startsWith('/api/google-wallet') || pathname.startsWith('/business-cards')) {
     // In Next.js 15, request.ip is removed. We use the 'x-forwarded-for' header instead.
@@ -47,7 +62,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 2. Subdomain Routing Logic
+  // 3. Subdomain Routing Logic
   // Exclude standard assets and APIs from being rewritten by subdomain
   if (
     pathname.startsWith('/_next') ||
