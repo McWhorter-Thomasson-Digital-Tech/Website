@@ -67,9 +67,9 @@ export default async function Image() {
             marginBottom: '50px',
           }}
         >
-          {/* @ts-ignore */}
+          {/* @ts-expect-error: Satori allows ArrayBuffer in src, but React types do not */}
           <img
-            src={logoData}
+            src={logoData as any}
             width={320}
             height={320}
             style={{
