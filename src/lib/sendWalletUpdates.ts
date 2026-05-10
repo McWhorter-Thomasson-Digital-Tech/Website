@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import { supabase } from './supabase';
 
 /**
@@ -94,9 +95,9 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
     return { updated: passes.length, notified: 0 };
   }
 
-  // 3. Send APNs pushes
+  // 3. Send APNs pushes (Stateless Implementation)
   try {
-    console.log('[wallet-updates] Step 4: Sending APNs push...');
+    console.log('[wallet-updates] Step 4: Sending APNs push (Stateless)...');
     const {
       APPLE_APNS_KEY,
       APPLE_APNS_KEY_ID,
@@ -109,40 +110,53 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
       return { updated: passes.length, notified: 0 };
     }
 
-    console.log('[wallet-updates] Step 4.1: Importing apn library...');
-    const apn = (await import('apn')).default;
-
-    console.log('[wallet-updates] Step 4.2: Creating apn.Provider...');
-    const provider = new apn.Provider({
-      token: {
-        key: Buffer.from(APPLE_APNS_KEY, 'base64'),
-        keyId: APPLE_APNS_KEY_ID,
-        teamId: APPLE_PASS_TEAM_IDENTIFIER
+    console.log('[wallet-updates] Step 4.1: Generating APNs JWT...');
+    const privateKey = Buffer.from(APPLE_APNS_KEY, 'base64').toString('utf8');
+    const token = jwt.sign({}, privateKey, {
+      algorithm: 'ES256',
+      issuer: APPLE_PASS_TEAM_IDENTIFIER,
+      header: {
+        alg: 'ES256',
+        kid: APPLE_APNS_KEY_ID,
       },
-      production: true
     });
 
-    try {
-      const notification = new apn.Notification();
-      // Apple Wallet requires a completely empty payload for pass updates
-      notification.topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
+    const topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
+    let notifiedCount = 0;
 
-      console.log(`[wallet-updates] Step 4.3: Sending push to ${pushTokens.length} token(s)...`);
-      
-      // Race the send operation against a 10s timeout
-      const sendPromise = provider.send(notification, pushTokens);
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('APNs push timed out after 10s')), 10000)
-      );
+    console.log(`[wallet-updates] Step 4.2: Sending push to ${pushTokens.length} device(s)...`);
+    
+    // We send them in parallel with individual timeouts
+    const results = await Promise.all(pushTokens.map(async (deviceToken) => {
+      try {
+        const response = await fetch(`https://api.push.apple.com/3/device/${deviceToken}`, {
+          method: 'POST',
+          headers: {
+            'authorization': `bearer ${token}`,
+            'apns-topic': topic,
+            'apns-push-type': 'background',
+            'apns-priority': '5'
+          },
+          body: JSON.stringify({}),
+          signal: AbortSignal.timeout(5000)
+        });
 
-      const result = await Promise.race([sendPromise, timeoutPromise]) as any;
-      console.log(`[wallet-updates] Step 4.4 OK — APNs result:`, JSON.stringify(result));
-    } finally {
-      console.log('[wallet-updates] Step 4.5: Shutting down apn.Provider...');
-      provider.shutdown();
-    }
+        if (response.status === 200) {
+          notifiedCount++;
+          return { token: deviceToken, success: true };
+        } else {
+          const body = await response.text();
+          console.warn(`[wallet-updates] Push failed for ${deviceToken}: ${response.status} ${body}`);
+          return { token: deviceToken, success: false, status: response.status };
+        }
+      } catch (err: any) {
+        console.error(`[wallet-updates] Error sending to ${deviceToken}:`, err.message);
+        return { token: deviceToken, success: false, error: err.message };
+      }
+    }));
 
-    return { updated: passes.length, notified: pushTokens.length };
+    console.log(`[wallet-updates] Step 4.3 OK — Successfully notified ${notifiedCount}/${pushTokens.length} devices`);
+    return { updated: passes.length, notified: notifiedCount };
   } catch (err: any) {
     console.error('[wallet-updates] Step 4 FAILED — Exception:', err.message || err);
     return { updated: passes.length, notified: 0 };
