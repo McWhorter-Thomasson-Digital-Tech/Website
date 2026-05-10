@@ -109,8 +109,10 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
       return { updated: passes.length, notified: 0 };
     }
 
+    console.log('[wallet-updates] Step 4.1: Importing apn library...');
     const apn = (await import('apn')).default;
 
+    console.log('[wallet-updates] Step 4.2: Creating apn.Provider...');
     const provider = new apn.Provider({
       token: {
         key: Buffer.from(APPLE_APNS_KEY, 'base64'),
@@ -120,18 +122,29 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
       production: true
     });
 
-    const notification = new apn.Notification();
-    // Apple Wallet requires a completely empty payload for pass updates
-    notification.topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
+    try {
+      const notification = new apn.Notification();
+      // Apple Wallet requires a completely empty payload for pass updates
+      notification.topic = APPLE_PASS_TYPE_IDENTIFIER || 'pass.com.mtdigitaltech.businesscard';
 
-    const result = await provider.send(notification, pushTokens);
-    console.log(`[wallet-updates] Step 4 OK — APNs result:`, JSON.stringify(result));
+      console.log(`[wallet-updates] Step 4.3: Sending push to ${pushTokens.length} token(s)...`);
+      
+      // Race the send operation against a 10s timeout
+      const sendPromise = provider.send(notification, pushTokens);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('APNs push timed out after 10s')), 10000)
+      );
 
-    provider.shutdown();
+      const result = await Promise.race([sendPromise, timeoutPromise]) as any;
+      console.log(`[wallet-updates] Step 4.4 OK — APNs result:`, JSON.stringify(result));
+    } finally {
+      console.log('[wallet-updates] Step 4.5: Shutting down apn.Provider...');
+      provider.shutdown();
+    }
 
     return { updated: passes.length, notified: pushTokens.length };
-  } catch (err) {
-    console.error('[wallet-updates] Step 4 EXCEPTION:', err);
+  } catch (err: any) {
+    console.error('[wallet-updates] Step 4 FAILED — Exception:', err.message || err);
     return { updated: passes.length, notified: 0 };
   }
 }
