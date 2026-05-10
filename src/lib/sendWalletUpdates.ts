@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import http2 from 'http2';
 import { supabase } from './supabase';
 
 /**
@@ -95,9 +96,9 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
     return { updated: passes.length, notified: 0 };
   }
 
-  // 3. Send APNs pushes (Stateless Implementation)
+  // 3. Send APNs pushes (HTTP/2 Implementation)
   try {
-    console.log('[wallet-updates] Step 4: Sending APNs push (Stateless)...');
+    console.log('[wallet-updates] Step 4: Sending APNs push via HTTP/2...');
     const {
       APPLE_APNS_KEY,
       APPLE_APNS_KEY_ID,
@@ -126,34 +127,58 @@ export async function sendAllWalletUpdates(): Promise<{ updated: number; notifie
 
     console.log(`[wallet-updates] Step 4.2: Sending push to ${pushTokens.length} device(s)...`);
     
-    // We send them in parallel with individual timeouts
-    const results = await Promise.all(pushTokens.map(async (deviceToken) => {
-      try {
-        const response = await fetch(`https://api.push.apple.com/3/device/${deviceToken}`, {
-          method: 'POST',
-          headers: {
-            'authorization': `bearer ${token}`,
-            'apns-topic': topic,
-            'apns-push-type': 'background',
-            'apns-priority': '5'
-          },
-          body: JSON.stringify({}),
-          signal: AbortSignal.timeout(5000)
+    // 1. Open a single HTTP/2 connection to Apple
+    const client = http2.connect('https://api.push.apple.com');
+
+    client.on('error', (err) => console.error('[wallet-updates] HTTP/2 Client Error:', err));
+
+    // 2. Send requests over the multiplexed connection
+    const results = await Promise.all(pushTokens.map((deviceToken) => {
+      return new Promise((resolve) => {
+        // Set a per-stream timeout
+        const req = client.request({
+          ':method': 'POST',
+          ':path': `/3/device/${deviceToken}`,
+          'authorization': `bearer ${token}`,
+          'apns-topic': topic,
+          'apns-push-type': 'background',
+          'apns-priority': '5'
         });
 
-        if (response.status === 200) {
-          notifiedCount++;
-          return { token: deviceToken, success: true };
-        } else {
-          const body = await response.text();
-          console.warn(`[wallet-updates] Push failed for ${deviceToken}: ${response.status} ${body}`);
-          return { token: deviceToken, success: false, status: response.status };
-        }
-      } catch (err: any) {
-        console.error(`[wallet-updates] Error sending to ${deviceToken}:`, err.message);
-        return { token: deviceToken, success: false, error: err.message };
-      }
+        req.setTimeout(5000, () => {
+          req.close(http2.constants.NGHTTP2_CANCEL);
+          resolve({ token: deviceToken, success: false, error: 'Timeout' });
+        });
+
+        let responseData = '';
+
+        req.on('response', (headers) => {
+          const status = headers[':status'];
+          req.on('data', (chunk) => { responseData += chunk; });
+          req.on('end', () => {
+            if (status === 200) {
+              notifiedCount++;
+              resolve({ token: deviceToken, success: true });
+            } else {
+              console.warn(`[wallet-updates] Push failed for ${deviceToken}: ${status} ${responseData}`);
+              resolve({ token: deviceToken, success: false, status });
+            }
+          });
+        });
+
+        req.on('error', (err) => {
+          console.error(`[wallet-updates] Stream error for ${deviceToken}:`, err.message);
+          resolve({ token: deviceToken, success: false, error: err.message });
+        });
+
+        // Send the empty payload
+        req.write(JSON.stringify({}));
+        req.end();
+      });
     }));
+
+    // 3. Close the connection when done
+    client.close();
 
     console.log(`[wallet-updates] Step 4.3 OK — Successfully notified ${notifiedCount}/${pushTokens.length} devices`);
     return { updated: passes.length, notified: notifiedCount };
