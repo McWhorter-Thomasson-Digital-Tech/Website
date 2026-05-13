@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { mockBusinessCards } from '@/data/mockBusinessCards';
+import { getBusinessCard } from '@/lib/businessCards';
 import ProfileHeader from '@/components/business-cards/ProfileHeader';
 import ActionRow from '@/components/business-cards/ActionRow';
 import SaveButton from '@/components/business-cards/SaveButton';
@@ -7,11 +7,7 @@ import WalletActionRow from '@/components/business-cards/WalletActionRow';
 import QRCodeDisplay from '@/components/business-cards/QRCodeDisplay';
 import styles from './page.module.css';
 
-export function generateStaticParams() {
-  return Object.keys(mockBusinessCards).map((employeeId) => ({
-    employeeId,
-  }));
-}
+export const revalidate = 60;
 
 export default async function BusinessCardPage({
   params,
@@ -19,7 +15,7 @@ export default async function BusinessCardPage({
   params: Promise<{ employeeId: string }>;
 }) {
   const { employeeId } = await params;
-  const employeeData = mockBusinessCards[employeeId];
+  const employeeData = await getBusinessCard(employeeId);
 
   if (!employeeData) {
     notFound();

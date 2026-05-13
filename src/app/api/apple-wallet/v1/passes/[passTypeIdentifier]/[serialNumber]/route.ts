@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { mockBusinessCards } from '@/data/mockBusinessCards';
+import { getBusinessCard } from '@/lib/businessCards';
 import { PKPass } from 'passkit-generator';
 import fs from 'fs';
 import path from 'path';
@@ -32,7 +32,7 @@ export async function GET(
 
     // Extract employeeId from serialNumber (format: card-{employeeId})
     const employeeId = serialNumber.replace('card-', '');
-    const employeeData = mockBusinessCards[employeeId];
+    const employeeData = await getBusinessCard(employeeId);
 
     if (!employeeData) {
       return new NextResponse('Pass Not Found', { status: 404 });

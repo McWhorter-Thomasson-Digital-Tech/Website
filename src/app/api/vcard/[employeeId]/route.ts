@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import vCardsJS from 'vcards-js';
-import { mockBusinessCards } from '@/data/mockBusinessCards';
+import { getBusinessCard } from '@/lib/businessCards';
+
+export const revalidate = 60;
 
 export async function GET(
   request: Request,
@@ -10,7 +12,7 @@ export async function GET(
     const { employeeId } = await params;
     
     // In a real app, this would fetch from a database or CMS
-    const employeeData = mockBusinessCards[employeeId];
+    const employeeData = await getBusinessCard(employeeId);
 
     if (!employeeData) {
       return new NextResponse('Employee not found', { status: 404 });

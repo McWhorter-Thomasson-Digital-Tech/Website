@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { mockBusinessCards } from '@/data/mockBusinessCards';
+import { getBusinessCard } from '@/lib/businessCards';
 import jwt from 'jsonwebtoken';
 
-export const runtime = 'nodejs';
+export const revalidate = 60;
 
 export async function GET(
   request: Request,
@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     const { employeeId } = await params;
-    const employeeData = mockBusinessCards[employeeId];
+    const employeeData = await getBusinessCard(employeeId);
 
     if (!employeeData) {
       return NextResponse.json({ error: 'Employee not found' }, { status: 404 });

@@ -1,3 +1,17 @@
+export interface BusinessCardPreferences {
+  online_card?: {
+    theme?: 'light' | 'dark' | 'system';
+    accent_color?: string;
+    layout?: 'modern' | 'classic';
+    [key: string]: any;
+  };
+  wallet_card?: {
+    show_qr_code?: boolean;
+    [key: string]: any;
+  };
+  [key: string]: any;
+}
+
 export interface BusinessCardData {
   id: string;
   firstName: string;
@@ -11,6 +25,7 @@ export interface BusinessCardData {
   profileImageUrl: string;
   companyName: string;
   companyWebsite: string;
+  preferences?: BusinessCardPreferences;
 }
 
 export interface WalletPassData extends BusinessCardData {
