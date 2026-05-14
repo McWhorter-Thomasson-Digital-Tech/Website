@@ -136,14 +136,15 @@
 .subtitle {
   font-size: 1rem;
   color: var(--muted-foreground);
-  max-width: 42rem;
-  margin: 0 auto;
+  max-width: 35rem;
+  margin: 1.5rem auto;
   line-height: 1.75;
 }
 
 .subtitle2 {
   font-size: 1rem;
-  color: var(--muted-foreground);
+  font-weight: 600;
+  color: var(--primary);
   max-width: 42rem;
   margin: 0 auto 2.5rem;
   line-height: 1.75;

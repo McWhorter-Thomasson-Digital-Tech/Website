@@ -90,7 +90,7 @@ export function Hero() {
         </h1>
         
         <p className={styles.subtitle}>
-          We can fix that.
+          We engineer custom React websites, headless e-commerce storefronts, and high-performance SaaS applications for Lynchburg, VA businesses.
         </p>
         <p className={styles.subtitle2}>
           Starting at just $300/mo.
