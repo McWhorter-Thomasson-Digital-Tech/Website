@@ -31,7 +31,7 @@ export default function AboutPage() {
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>The architects</h2>
             <p className={styles.cardText}>
-              Matthew McWhorter and Graham Thomasson lead a team of full-stack engineers and UI designers.
+              Matthew McWhorter and Graham Thomasson are full-stack engineers and UI designers.
             </p>
           </div>
         </section>
