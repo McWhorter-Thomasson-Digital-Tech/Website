@@ -1,68 +1,43 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import fs from 'fs';
+import path from 'path';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mtdigitaltech.com'
-  const lastModified = new Date()
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = 'https://mtdt.dev'; // Replace with your verified target domain
 
-  // Define core services to easily scale this list as your offerings grow
-  const services = [
-    'backend-pipelines',
-    'performance-audits',
-    'react-ecosystems',
-    'technical-strategy',
-  ]
+  // Base production paths
+  const routes = [
+    '',
+    '/about',
+    '/pricing',
+    '/contact',
+    '/services',
+    '/faq'
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 1.0,
+  }));
 
-  // Generate sitemap objects for each specific service page
-  const serviceUrls = services.map((service) => ({
-    url: `${baseUrl}/services/${service}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.9, // High priority for targeted, high-intent landing pages
-  }))
+  // Dynamic pSEO asset crawling
+  const pSeoDir = path.join(process.cwd(), 'data', 'generated-content');
+  let pSeoRoutes: any[] = [];
 
-  return [
-    {
-      url: baseUrl,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    ...serviceUrls,
-    {
-      url: `${baseUrl}/demo`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-  ]
+  if (fs.existsSync(pSeoDir)) {
+    const files = fs.readdirSync(pSeoDir);
+    pSeoRoutes = files
+      .filter((file) => file.endsWith('.md'))
+      .map((file) => {
+        const slug = file.replace('.md', '');
+        return {
+          url: `${baseUrl}/solutions/${slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        };
+      });
+  }
+
+  return [...routes, ...pSeoRoutes];
 }

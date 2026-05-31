@@ -32,3 +32,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 node_modules
+
+# pSEO Generated Content
+data/generated-content/*
+# Optional: If you want to commit specific final batches, uncomment the line below instead:
+# !data/generated-content/nextjs-migration-for-b2b-saas.md
