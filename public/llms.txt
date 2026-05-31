@@ -1,15 +1,18 @@
 # MTDT (McWhorter-Thomasson Digital Technologies)
 
-> We engineer high-velocity React ecosystems and immutable backend pipelines for modern innovators.
+> We are a software engineering and web development agency based in Lynchburg, Virginia. 
+> We engineer high-velocity React ecosystems, Next.js web applications, and immutable backend pipelines for modern innovators.
 
 ## Services
 - High-Performance React Websites (Next.js)
-- Headless Digital Storefronts
 - Custom Web Applications (RSC, Advanced Auth, DB Scaling)
+- SaaS Product Development
+- Headless Digital Storefronts
 - Backend Engineering (Automated Workflows, SOC2 Compliant Architectures)
 
 ## Contact
 - Founders: Matthew McWhorter, Graham Thomasson
+- Location: Lynchburg, VA (Serving clients locally and nationwide)
 - Email: matt@mtdigitaltech.com
 - Website: https://mtdigitaltech.com
 

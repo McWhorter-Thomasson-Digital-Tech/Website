@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <Link href="/" className={styles.brandLogo}>
               <Image 
-                src="/Logo_Clear_Center.png" 
+                src="/Logo_Clear_Center.png"
                 alt="MTDT Agency Logo" 
                 width={100} 
                 height={32} 
@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} McWhorter-Thomasson Digital Technologies. All rights reserved.
+            &copy; {new Date().getFullYear()} McWhorter-Thomasson Digital Technologies. Founded in Lynchburg, VA. All rights reserved.
           </p>
         </div>
       </div>

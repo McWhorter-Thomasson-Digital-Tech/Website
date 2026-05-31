@@ -19,14 +19,14 @@ interface PackageConfig {
 const packages: PackageConfig[] = [
   {
     id: 'website',
-    name: 'Business Websites & SEO',
-    shortName: 'Marketing',
-    description: 'High-performance sites designed for visibility and business growth.',
+    name: 'Custom Web Development',
+    shortName: 'Website',
+    description: 'High-performance Next.js web development Lynchburg VA businesses trust for growth.',
     features: [
-      'Premium Design, Lightning-Fast Performance',
-      'Strategic Search Optimization (SEO) & AI-Powered GEO for Next-Gen Visibility',
-      '99.99% Uptime',
-      'Custom Form & API Solutions',
+      'Custom React front-end development',
+      'Advanced Search Engine Optimization (SEO)',
+      'Sleek, conversion-focused UI/UX design',
+      'Custom form & third-party API solutions',
     ],
     pricing: {
       annually: { price: '300', detail: 'Billed annually', savings: 'Save 25% annually' },
@@ -36,14 +36,14 @@ const packages: PackageConfig[] = [
   },
   {
     id: 'ecommerce',
-    name: 'E-commerce storefronts',
+    name: 'Headless E-commerce',
     shortName: 'E-Commerce',
-    description: 'Custom online stores designed for premium speed and maximum revenue.',
+    description: 'Lightning-fast headless e-commerce development for maximum revenue scaling.',
     features: [
-      'Custom Headless Architecture',
-      'Seamless Payment & PIM Integration',
-      'Global Performance & Cart Stability',
-      'Programmatic Catalog Visibility (GEO)',
+      'Next.js e-commerce storefronts',
+      'High-converting tactical UI design',
+      'Custom shopping cart development',
+      'Seamless API & PIM backend integration',
     ],
     pricing: {
       annually: { price: '600', detail: 'Billed annually', savings: 'Save 25% annually' },
@@ -53,14 +53,14 @@ const packages: PackageConfig[] = [
   },
   {
     id: 'fullstack',
-    name: 'SaaS platforms',
+    name: 'Custom SaaS & Software',
     shortName: 'Full-Stack',
-    description: 'Bespoke engineering for specialized business applications.',
+    description: 'Enterprise-grade custom software development and scalable SaaS architecture.',
     features: [
-      'Advanced Multi-User Platforms',
-      'Scalable Database Systems',
-      'Secure Access & Data Protection',
-      'Seamless Third-Party Ecosystems',
+      'Full-stack TypeScript engineering',
+      'B2B custom dashboard development',
+      'Secure database management systems',
+      'Scalable web application architecture',
     ],
     pricing: {
       annually: { price: '1200', detail: 'Billed annually', savings: 'Save 20% annually' },
@@ -126,10 +126,10 @@ export function ReactOffer() {
       <div className={styles.container}>
 
         <div className={styles.sectionHeader}>
-          <p className={styles.label}>Frontend & backend engineering</p>
-          <h2 className={styles.title}>Our core products</h2>
+          <p className={styles.label}>Premium Digital Technology Agency</p>
+          <h2 className={styles.title}>Elite software development in Lynchburg, VA</h2>
           <p className={styles.description}>
-            We build fast, scalable websites and web apps that drive revenue.
+            From custom web design to complex enterprise software, we are the software developer Lynchburg VA relies on to build fast, scalable digital products that drive revenue.
           </p>
         </div>
 
@@ -143,7 +143,7 @@ export function ReactOffer() {
                 <div className={styles.cardInner}>
 
                   <div className={styles.pricingSide}>
-                    <p className={styles.tierLabel}>{pkg.name}</p>
+                    <h3 className={styles.tierLabel}>{pkg.name}</h3>
 
                     {/* Billing Cycle Toggle — inside the card */}
                     <div className={styles.billingToggleWrapper}>

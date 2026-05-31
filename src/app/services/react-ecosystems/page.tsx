@@ -5,8 +5,8 @@ import Link from 'next/link';
 import styles from '../page.module.css';
 
 export const metadata = {
-  title: "Premium Web Apps & SaaS | MTDT Agency",
-  description: "High-performance digital experiences architected with React and Next.js for ambitious teams requiring exceptional speed and visibility.",
+  title: "React & Next.js Development Agency in Lynchburg, VA | MTDT",
+  description: "High-performance digital experiences architected with React and Next.js. We build custom SaaS platforms, enterprise web apps, and headless storefronts in Lynchburg, Virginia.",
 };
 
 export default function ReactEcosystemsPage() {

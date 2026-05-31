@@ -24,7 +24,7 @@ Orchestrating secure, predictable, and fully automated data flows for mission-cr
 Architectural consulting for high-growth technical teams navigating complex stacks. Deep-dive analytical reporting and optimization for mission-critical applications.
 
 ## Contact Information
-- Email: matt@mtdigitaltech.com
+- Email: contact@mtdigitaltech.com
 - Phone: +1-704-254-0084
 - Location: Lynchburg, VA, United States
 - Website: https://mtdigitaltech.com
